@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مراجعة شاملة — الوحدات 4، 5، 6، 7</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080f;
+  --u4:#b39ddb;--u4d:#311b92;
+  --u5:#ffd54f;--u5d:#5d3f00;
+  --u6:#ff8a65;--u6d:#5d1a00;
+  --u7:#80deea;--u7d:#004d5e;
+  --correct:#66bb6a;--wrong:#ef5350;
+  --card:rgba(255,255,255,.04);--border:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'Cairo',sans-serif;color:#e8eaf6;min-height:100vh;
+  background-image:radial-gradient(ellipse at 15% 15%,rgba(179,157,219,.06) 0%,transparent 45%),
+  radial-gradient(ellipse at 85% 85%,rgba(128,222,234,.06) 0%,transparent 45%);}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:300;background:rgba(7,8,15,.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);padding:0 16px;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;
+  overflow-x:auto;padding:11px 0;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-logo{font-weight:900;font-size:.95rem;background:linear-gradient(135deg,#b39ddb,#80deea);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  white-space:nowrap;margin-left:12px;flex-shrink:0;}
+.nb{border:1px solid var(--border);background:rgba(255,255,255,.04);color:rgba(232,234,246,.65);
+  border-radius:8px;padding:6px 14px;font-family:'Tajawal',sans-serif;font-size:.8rem;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s;}
+.nb:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nb.active{font-weight:700;color:#0b0b18;}
+.nb4.active{background:var(--u4);border-color:var(--u4);}
+.nb5.active{background:var(--u5);border-color:var(--u5);}
+.nb6.active{background:var(--u6);border-color:var(--u6);}
+.nb7.active{background:var(--u7);border-color:var(--u7);}
+
+/* HERO */
+.hero{text-align:center;padding:44px 20px 24px;}
+.hero h1{font-size:clamp(1.5rem,3.5vw,2.3rem);font-weight:900;
+  background:linear-gradient(135deg,#b39ddb,#ffd54f,#ff8a65,#80deea);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
+.hero p{color:rgba(232,234,246,.4);font-family:'Tajawal',sans-serif;font-size:.88rem;}
+.hero-pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.hp{padding:5px 16px;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:.78rem;font-weight:600;}
+.hp4{background:rgba(179,157,219,.15);border:1px solid rgba(179,157,219,.3);color:var(--u4);}
+.hp5{background:rgba(255,213,79,.1);border:1px solid rgba(255,213,79,.3);color:var(--u5);}
+.hp6{background:rgba(255,138,101,.12);border:1px solid rgba(255,138,101,.3);color:var(--u6);}
+.hp7{background:rgba(128,222,234,.1);border:1px solid rgba(128,222,234,.3);color:var(--u7);}
+
+/* SECTIONS */
+.section{display:none;max-width:1100px;margin:0 auto;padding:20px 16px 80px;}
+.section.active{display:block;animation:fi .4s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.sec-hd{margin-bottom:20px;}
+.sec-title{font-size:1.45rem;font-weight:900;margin-bottom:4px;}
+.sec-sub{font-family:'Tajawal',sans-serif;font-size:.85rem;color:rgba(232,234,246,.4);}
+
+/* TABS */
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.tb{padding:8px 20px;border-radius:10px;background:rgba(255,255,255,.05);
+  border:1px solid var(--border);font-family:'Tajawal',sans-serif;font-size:.85rem;
+  cursor:pointer;color:rgba(232,234,246,.6);transition:all .2s;}
+.tb:hover{background:rgba(255,255,255,.08);}
+.tb.active{font-weight:700;color:#0b0b18;}
+.u4 .tb.active{background:var(--u4);border-color:var(--u4);}
+.u5 .tb.active{background:var(--u5);border-color:var(--u5);}
+.u6 .tb.active{background:var(--u6);border-color:var(--u6);}
+.u7 .tb.active{background:var(--u7);border-color:var(--u7);}
+.tc{display:none;}.tc.active{display:block;animation:fi .3s ease;}
+
+/* MIND MAP */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+.mc{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;}
+.mc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.mc-hd{padding:16px 18px 12px;border-bottom:2px solid;}
+.mc-num{font-size:.7rem;font-weight:600;letter-spacing:2px;opacity:.7;margin-bottom:4px;font-family:'Tajawal',sans-serif;}
+.mc-title{font-size:.98rem;font-weight:700;}
+.mc-body{padding:12px 16px 16px;}
+.branch{margin-bottom:9px;}
+.btog{display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);transition:background .2s;
+  width:100%;text-align:right;user-select:none;}
+.btog:hover{background:rgba(255,255,255,.08);}
+.bico{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.blbl{flex:1;font-size:.82rem;font-weight:600;}
+.chv{font-size:.62rem;transition:transform .3s;opacity:.4;}
+.branch.open .chv{transform:rotate(180deg);}
+.bcnt{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.branch.open .bcnt{max-height:600px;}
+ul.lv{padding:7px 10px 2px;list-style:none;}
+ul.lv li{padding:4px 8px 4px 0;border-right:2px solid rgba(255,255,255,.07);
+  font-size:.8rem;color:rgba(232,234,246,.8);line-height:1.5;font-family:'Tajawal',sans-serif;}
+ul.lv li::before{content:'◈';margin-left:5px;font-size:.58rem;opacity:.4;}
+.chip{display:inline-block;background:rgba(255,213,79,.1);border:1px solid rgba(255,213,79,.25);
+  color:#ffe082;font-size:.73rem;padding:1px 6px;border-radius:5px;font-family:'Tajawal',monospace;margin:1px 0;}
+
+/* MCQ */
+.mcq-wrap{max-width:720px;margin:0 auto;}
+.mpw{background:rgba(255,255,255,.08);border-radius:20px;height:7px;overflow:hidden;margin-bottom:5px;}
+.mp{height:100%;border-radius:20px;transition:width .4s ease;}
+.u4 .mp{background:linear-gradient(90deg,var(--u4),#80cbc4);}
+.u5 .mp{background:linear-gradient(90deg,var(--u5),#ffcc02);}
+.u6 .mp{background:linear-gradient(90deg,var(--u6),#ffcc80);}
+.u7 .mp{background:linear-gradient(90deg,var(--u7),#b39ddb);}
+.minfo{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(232,234,246,.4);
+  font-family:'Tajawal',sans-serif;margin-bottom:16px;}
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px 18px;animation:fi .35s ease;}
+.qtxt{font-size:.95rem;font-weight:700;line-height:1.7;color:#fff;margin-bottom:14px;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);
+  border:1.5px solid rgba(255,255,255,.09);border-radius:10px;padding:10px 13px;
+  cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif;font-size:.88rem;text-align:right;}
+.opt:hover{background:rgba(255,255,255,.08);}
+.opt.correct{background:rgba(102,187,106,.12);border-color:var(--correct);color:#a5d6a7;}
+.opt.wrong{background:rgba(239,83,80,.12);border-color:var(--wrong);color:#ef9a9a;}
+.opt.disabled{pointer-events:none;}
+.ol{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;font-size:.73rem;font-weight:700;flex-shrink:0;}
+.opt.correct .ol{background:var(--correct);color:#fff;}
+.opt.wrong .ol{background:var(--wrong);color:#fff;}
+.fb{margin-top:12px;padding:10px 13px;border-radius:9px;font-family:'Tajawal',sans-serif;
+  font-size:.84rem;line-height:1.6;display:none;}
+.fb.show{display:block;animation:fi .3s ease;}
+.cfb{background:rgba(102,187,106,.1);border:1px solid rgba(102,187,106,.3);color:#a5d6a7;}
+.wfb{background:rgba(239,83,80,.1);border:1px solid rgba(239,83,80,.3);color:#ef9a9a;}
+.bnx{margin-top:14px;width:100%;border:none;border-radius:9px;padding:11px;
+  font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;color:#0b0b18;
+  cursor:pointer;display:none;transition:opacity .2s;}
+.bnx.show{display:block;animation:fi .3s ease;}
+.bnx:hover{opacity:.88;}
+.u4 .bnx{background:linear-gradient(135deg,var(--u4),#80cbc4);}
+.u5 .bnx{background:linear-gradient(135deg,var(--u5),#ffcc02);}
+.u6 .bnx{background:linear-gradient(135deg,var(--u6),#ffcc80);}
+.u7 .bnx{background:linear-gradient(135deg,var(--u7),#b39ddb);}
+.rbox{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:34px 20px;text-align:center;display:none;animation:fi .4s ease;}
+.rbox.show{display:block;}
+.re{font-size:3.2rem;margin-bottom:10px;}
+.rs{font-size:2.8rem;font-weight:900;color:var(--u5);}
+.rl{font-size:.85rem;color:rgba(232,234,246,.4);font-family:'Tajawal',sans-serif;margin-bottom:14px;}
+.rm{font-size:.98rem;font-weight:600;margin-bottom:18px;}
+.brt{border:none;border-radius:9px;padding:10px 26px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;color:#0b0b18;cursor:pointer;}
+.u4 .brt{background:var(--u4);}.u5 .brt{background:var(--u5);}
+.u6 .brt{background:var(--u6);}.u7 .brt{background:var(--u7);}
+
+/* ESSAY */
+.elist{display:flex;flex-direction:column;gap:16px;max-width:820px;margin:0 auto;}
+.eq{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;animation:fi .4s ease both;}
+.eq-hd{padding:14px 18px 10px;display:flex;align-items:flex-start;gap:11px;border-bottom:1px solid var(--border);}
+.eqn{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;font-weight:900;color:#0b0b18;flex-shrink:0;}
+.u4 .eqn{background:var(--u4);}.u5 .eqn{background:var(--u5);}
+.u6 .eqn{background:var(--u6);}.u7 .eqn{background:var(--u7);}
+.ebadge{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:7px;margin-bottom:4px;
+  display:inline-block;font-family:'Tajawal',sans-serif;}
+.tc-c{background:rgba(255,213,79,.12);border:1px solid rgba(255,213,79,.3);color:var(--u5);}
+.tc-e{background:rgba(179,157,219,.12);border:1px solid rgba(179,157,219,.3);color:var(--u4);}
+.tc-b{background:rgba(128,203,196,.12);border:1px solid rgba(128,203,196,.3);color:#80cbc4;}
+.eqtxt{font-size:.92rem;font-weight:700;line-height:1.7;color:#fff;}
+.atog{margin:10px 18px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(128,203,196,.07);border:1px dashed rgba(128,203,196,.3);
+  border-radius:8px;padding:8px 13px;transition:background .2s;
+  font-family:'Tajawal',sans-serif;font-size:.83rem;color:#80cbc4;user-select:none;}
+.atog:hover{background:rgba(128,203,196,.13);}
+.atog .chv{margin-right:auto;transition:transform .3s;font-size:.65rem;opacity:.45;}
+.atog.open .chv{transform:rotate(180deg);}
+.acnt{max-height:0;overflow:hidden;transition:max-height .45s ease;margin:0 18px;}
+.acnt.open{max-height:1000px;}
+.ain{background:rgba(128,203,196,.06);border:1px solid rgba(128,203,196,.22);
+  border-radius:9px;padding:13px 15px;margin-bottom:14px;
+  font-family:'Tajawal',sans-serif;font-size:.85rem;line-height:1.8;color:rgba(232,234,246,.85);}
+.step{display:flex;gap:8px;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.05);}
+.step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.sn{width:20px;height:20px;border-radius:5px;background:rgba(128,203,196,.2);color:#80cbc4;
+  display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.fl{background:rgba(255,213,79,.08);border:1px solid rgba(255,213,79,.2);border-radius:5px;
+  padding:3px 9px;margin:3px 0;color:#ffe082;font-family:'Tajawal',monospace;font-size:.82rem;display:inline-block;}
+.fan{background:rgba(102,187,106,.1);border:1px solid rgba(102,187,106,.3);
+  border-radius:7px;padding:6px 11px;margin-top:8px;color:#a5d6a7;font-weight:700;font-size:.86rem;}
+
+/* ══ DEEP MAP STYLES ══ */
+.lesson{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:22px;animation:fi .5s ease both;}
+.lesson-hd{padding:20px 24px 16px;border-bottom:2px solid;}
+.lnum{font-size:.72rem;font-weight:600;letter-spacing:2px;opacity:.7;margin-bottom:5px;font-family:'Tajawal',sans-serif;}
+.ltitle{font-size:1.15rem;font-weight:900;}
+.lesson-body{padding:18px 24px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.ex-box{margin:8px 14px 4px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.ex-title{font-size:.72rem;font-weight:700;letter-spacing:1px;font-family:'Tajawal',sans-serif;opacity:.6;margin-bottom:6px;}
+.ex-q{font-size:.83rem;font-family:'Tajawal',sans-serif;color:rgba(232,234,246,.8);line-height:1.6;margin-bottom:6px;}
+.ex-steps{font-size:.8rem;font-family:'Tajawal',monospace;color:#80cbc4;line-height:1.8;}
+.ex-ans{background:rgba(102,187,106,.1);border:1px solid rgba(102,187,106,.25);border-radius:7px;padding:5px 10px;margin-top:6px;color:#a5d6a7;font-size:.8rem;font-family:'Tajawal',sans-serif;font-weight:700;}
+.cmp-table{width:calc(100% - 28px);border-collapse:collapse;margin:8px 14px 4px;font-family:'Tajawal',sans-serif;font-size:.8rem;}
+.cmp-table th{padding:7px 10px;text-align:center;font-weight:700;border:1px solid rgba(255,255,255,.08);}
+.cmp-table td{padding:6px 10px;text-align:center;border:1px solid rgba(255,255,255,.06);color:rgba(232,234,246,.8);}
+.cmp-table tr:nth-child(even) td{background:rgba(255,255,255,.03);}
+.rule-box{margin:8px 14px 4px;padding:10px 14px;border-radius:10px;border-right:3px solid;font-family:'Tajawal',sans-serif;font-size:.83rem;line-height:1.7;}
+.chip-b{background:rgba(128,203,196,.1);border:1px solid rgba(128,203,196,.25);color:#80cbc4;}
+.chip-r{background:rgba(255,138,101,.1);border:1px solid rgba(255,138,101,.25);color:#ffab91;}
+.chip-p{background:rgba(179,157,219,.1);border:1px solid rgba(179,157,219,.25);color:#ce93d8;}
+.chip-g{background:rgba(102,187,106,.1);border:1px solid rgba(102,187,106,.25);color:#a5d6a7;}
+.pos{color:#a5d6a7;font-weight:700;}.neg{color:#ef9a9a;font-weight:700;}.neu{color:#ffd54f;font-weight:700;}
+
+
+/* ══ LIGHT MODE ══ */
+body.light {
+  --bg: #f5f6fa;
+  --card: rgba(255,255,255,0.95);
+  --border: rgba(0,0,0,0.1);
+  color: #1a1a2e;
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(179,157,219,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(128,222,234,0.12) 0%, transparent 50%);
+}
+body.light .nav {
+  background: rgba(245,246,250,0.97);
+  border-bottom-color: rgba(0,0,0,0.1);
+}
+body.light .nb {
+  background: rgba(0,0,0,0.05);
+  color: rgba(26,26,46,0.7);
+  border-color: rgba(0,0,0,0.1);
+}
+body.light .nb:hover { background: rgba(0,0,0,0.09); color: #1a1a2e; }
+body.light .hero p { color: rgba(26,26,46,0.5); }
+body.light .sec-sub { color: rgba(26,26,46,0.5); }
+body.light .lesson { background: #fff; border-color: rgba(0,0,0,0.1); box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+body.light .btog {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.09);
+}
+body.light .btog:hover { background: rgba(0,0,0,0.08); }
+body.light .blbl { color: #1a1a2e; }
+body.light ul.lv li { color: rgba(26,26,46,0.85); border-right-color: rgba(0,0,0,0.1); }
+body.light .ex-box { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+body.light .ex-q { color: rgba(26,26,46,0.8); }
+body.light .cmp-table td { color: rgba(26,26,46,0.85); border-color: rgba(0,0,0,0.07); }
+body.light .cmp-table tr:nth-child(even) td { background: rgba(0,0,0,0.03); }
+body.light .rule-box { color: rgba(26,26,46,0.8); }
+body.light .tab-bar, body.light .tabs { border-color: rgba(0,0,0,0.08); }
+body.light .tb {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.09);
+  color: rgba(26,26,46,0.6);
+}
+body.light .tb:hover { background: rgba(0,0,0,0.08); }
+body.light .qcard { background: #fff; border-color: rgba(0,0,0,0.1); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+body.light .qtxt { color: #1a1a2e; }
+body.light .opt {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.09);
+  color: #1a1a2e;
+}
+body.light .opt:hover { background: rgba(0,0,0,0.07); }
+body.light .ol { background: rgba(0,0,0,0.08); color: #1a1a2e; }
+body.light .mpw { background: rgba(0,0,0,0.1); }
+body.light .minfo { color: rgba(26,26,46,0.5); }
+body.light .rbox { background: #fff; border-color: rgba(0,0,0,0.1); }
+body.light .rm { color: #1a1a2e; }
+body.light .eq { background: #fff; border-color: rgba(0,0,0,0.1); }
+body.light .eqtxt { color: #1a1a2e; }
+body.light .atog { background: rgba(128,203,196,0.1); border-color: rgba(128,203,196,0.4); }
+body.light .ain { background: rgba(128,203,196,0.07); border-color: rgba(128,203,196,0.3); color: rgba(26,26,46,0.85); }
+body.light .step { border-bottom-color: rgba(0,0,0,0.06); }
+body.light .hero h1 { filter: brightness(0.85) saturate(1.3); }
+body.light .sec-title { filter: brightness(0.8); }
+body.light .chv { opacity: 0.5; }
+
+/* toggle button */
+.theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 500;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: all .3s;
+  background: linear-gradient(135deg, #b39ddb, #80deea);
+  color: #0b0b18;
+}
+body.light .theme-toggle {
+  background: linear-gradient(135deg, #311b92, #004d5e);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.theme-toggle:hover { transform: scale(1.1); }
+
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="تبديل المظهر">🌙</button>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">⚗️ كيمياء ثاني عشر</div>
+    <button class="nb nb4 active" onclick="showSec('4',this)">الوحدة 4 — الكيمياء الحركية</button>
+    <button class="nb nb5" onclick="showSec('5',this)">الوحدة 5 — الاتزان</button>
+    <button class="nb nb6" onclick="showSec('6',this)">الوحدة 6 — المحتوى الحراري</button>
+    <button class="nb nb7" onclick="showSec('7',this)">الوحدة 7 — الانتروبي</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>مراجعة شاملة — الفصل الدراسي الثاني</h1>
+  <p>خرائط ذهنية مفصلة مع أمثلة + 20 اختياري + 10 مقالي لكل وحدة</p>
+  <div class="hero-pills">
+    <span class="hp hp4">الوحدة 4: الكيمياء الحركية</span>
+    <span class="hp hp5">الوحدة 5: الاتزان</span>
+    <span class="hp hp6">الوحدة 6: المحتوى الحراري</span>
+    <span class="hp hp7">الوحدة 7: الانتروبي</span>
+  </div>
+</div>
+
+<!-- ══ U4 ══ -->
+<div class="section u4 active" id="s4">
+  <div class="sec-hd">
+    <div class="sec-title" style="color:var(--u4)">⚡ الوحدة الرابعة: الكيمياء الحركية</div>
+    <div class="sec-sub">سرعة التفاعل | قوانين السرعة | عمر النصف</div>
+  </div>
+  <div class="tabs">
+    <button class="tb active" onclick="showTab('4','map',this)">🗺️ خريطة ذهنية</button>
+    <button class="tb" onclick="showTab('4','mcq',this)">✅ اختيارية (20)</button>
+    <button class="tb" onclick="showTab('4','essay',this)">✍️ مقالية (10)</button>
+  </div>
+  <div class="tc active" id="4-map">
+<!-- LESSON 1 -->
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#311b92,#4527a0);border-bottom-color:var(--u4);">
+      <div class="lnum" style="color:var(--u4)">الدرس الأول</div>
+      <div class="ltitle">نظرية التصادم وسرعة التفاعل</div>
+    </div>
+    <div class="lesson-body">
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u4b);color:var(--u4)">📏</div><span class="blbl">تعريف سرعة التفاعل وقانونها</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>التغير في تركيز المادة الناتجة أو المتفاعلة في وحدة الزمن</li>
+            <li>قيمتها <strong>موجبة دائماً</strong> بغض النظر عن المادة</li>
+            <li>للمتفاعلات: <span class="chip">r = −(1/n) × Δ[A]/Δt</span> (إشارة سالبة لأن التركيز يقل)</li>
+            <li>للنواتج: <span class="chip">r = +(1/n) × Δ[D]/Δt</span> (موجبة لأن التركيز يزيد)</li>
+            <li>وحدات: <span class="chip-b chip">M/s</span> أو <span class="chip-b chip">mol·L⁻¹·s⁻¹</span> أو <span class="chip-b chip">M/min</span></li>
+            <li>نسبة سرعة مادتين = نسبة معاملاتهما في المعادلة</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال محلول</div>
+            <div class="ex-q">في التفاعل: N₂+3H₂→2NH₃، إذا كان Δ[H₂]=−0.6M خلال نفس الفترة، فما Δ[NH₃]؟</div>
+            <div class="ex-steps">r(H₂) = r(NH₃) → −(1/3)×(−0.6) = +(1/2)×Δ[NH₃]<br>Δ[NH₃] = (2/3)×0.6 = 0.4 M</div>
+            <div class="ex-ans">✓ Δ[NH₃] = 0.4 M</div>
+          </div></div>
+        </div>
+
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u4b);color:var(--u4)">💥</div><span class="blbl">نظرية التصادم وشروطه</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>جسيمات المواد في حركة عشوائية مستمرة → تتصادم مع بعضها</li>
+            <li>التفاعل الكيميائي = نتيجة تصادمات <strong>فعالة</strong> فقط</li>
+            <li><strong>شرط 1:</strong> أن تمتلك الجسيمات طاقة ≥ طاقة التنشيط (Ea)</li>
+            <li><strong>شرط 2:</strong> أن يكون التصادم في الاتجاه الفراغي المناسب</li>
+            <li>التصادم الفعال: يتوفر الشرطان معاً → يحدث التفاعل</li>
+            <li>التصادم غير الفعال: يغيب أحد الشرطين أو كلاهما</li>
+            <li>طاقة التنشيط (Ea): الحد الأدنى من الطاقة اللازمة لبدء التفاعل</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u4b);color:var(--u4)">🔧</div><span class="blbl">العوامل الستة المؤثرة في السرعة</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(179,157,219,.2);color:var(--u4)">العامل</th><th style="background:rgba(179,157,219,.2);color:var(--u4)">العلاقة</th><th style="background:rgba(179,157,219,.2);color:var(--u4)">التفسير بنظرية التصادم</th></tr>
+            <tr><td>طبيعة المواد</td><td class="neg">عكسي مع الروابط</td><td>روابط أكثر → طاقة أعلى لكسرها → أبطأ</td></tr>
+            <tr><td>التركيز (سوائل)</td><td class="pos">طردي</td><td>تركيز أعلى → جسيمات أكثر في الحجم → تصادمات فعالة أكثر</td></tr>
+            <tr><td>الضغط (غازات)</td><td class="pos">طردي</td><td>ضغط أعلى → حجم أقل → جسيمات أقرب → تصادمات أكثر</td></tr>
+            <tr><td>مساحة السطح (صلبة)</td><td class="pos">طردي</td><td>سطح أكبر → جسيمات أكثر متاحة للتصادم</td></tr>
+            <tr><td>درجة الحرارة</td><td class="pos">طردي</td><td>T أعلى → طاقة حركية أكبر → تصادمات فعالة أكثر</td></tr>
+            <tr><td>العامل الحفاز</td><td class="pos">طردي</td><td>يقلل Ea للطردي والعكسي بنفس المقدار → لا يؤثر على الاتزان</td></tr>
+          </table>
+          <div class="rule-box" style="background:rgba(179,157,219,.07);border-right-color:var(--u4);">
+            ⚠️ ترتيب السرعة حسب عدد الروابط: أيونات (بدون روابط) > رابطة أحادية > ثنائية > ثلاثية<br>
+            مثال: C) 2Na⁺+2F⁻ > D) H-H > A) N=O > E) N≡N
+          </div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#1a237e,#283593);border-bottom-color:#7986cb;">
+      <div class="lnum" style="color:#7986cb">الدرس الثاني</div>
+      <div class="ltitle">قوانين سرعة التفاعل</div>
+    </div>
+    <div class="lesson-body">
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(121,134,203,.15);color:#7986cb">📋</div><span class="blbl">القانون العام ومكوناته</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><span class="chip">r = k[A]ⁿ[B]ᵐ</span></li>
+            <li><strong>k</strong> = ثابت السرعة — يعتمد على درجة الحرارة فقط، وحدته متغيرة</li>
+            <li><strong>[A],[B]</strong> = تراكيز المواد المتفاعلة بالـ mol/L أو M</li>
+            <li><strong>n, m</strong> = رتبة التفاعل لكل مادة (0, 1, 2, ...)</li>
+            <li>الرتبة الكلية = n+m+... (مجموع رتب جميع المواد)</li>
+            <li>تُحدَّد الرتبة من <strong>التجربة</strong> وليس من المعادلة الموزونة</li>
+            <li>أهمية الرتبة: توضح كيفية تغير السرعة مع تغير التركيز</li>
+            <li>وحدة k: <span class="chip">k = M^(1−رتبة كلية) · s⁻¹</span></li>
+          </ul></div>
+        </div>
+
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(121,134,203,.15);color:#7986cb">📊</div><span class="blbl">الرتب الثلاث وخصائصها</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(121,134,203,.2);color:#7986cb">الخاصية</th><th style="background:rgba(121,134,203,.2);color:#7986cb">رتبة صفرية</th><th style="background:rgba(121,134,203,.2);color:#7986cb">رتبة أولى</th><th style="background:rgba(121,134,203,.2);color:#7986cb">رتبة ثانية</th></tr>
+            <tr><td>القانون</td><td>r=k[A]⁰=k</td><td>r=k[A]¹</td><td>r=k[A]²</td></tr>
+            <tr><td>مضاعفة [A]→</td><td class="neu">السرعة ثابتة</td><td class="pos">×2 سرعة</td><td class="pos">×4 سرعة</td></tr>
+            <tr><td>وحدة k</td><td>M·s⁻¹</td><td>s⁻¹</td><td>M⁻¹·s⁻¹</td></tr>
+            <tr><td>الميل في الرسم</td><td>ثابت = k</td><td>صفر (خط مستقيم)</td><td>= k</td></tr>
+          </table></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(121,134,203,.15);color:#7986cb">🔬</div><span class="blbl">اشتقاق قانون السرعة من التجربة</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>اختر تجربتين: يثبت فيهما تركيز كل المواد ما عدا المادة المراد إيجاد رتبتها</li>
+            <li>طبّق: <span class="chip">r₂/r₁ = ([A]₂/[A]₁)ⁿ</span></li>
+            <li>احسب n بأخذ اللوغاريتم: <span class="chip">n = ln(r₂/r₁) / ln([A]₂/[A]₁)</span></li>
+            <li>كرر لكل مادة على حدة</li>
+            <li>بعد معرفة الرتب، عوّض في القانون لإيجاد k</li>
+            <li>نسب التضاعف السريعة: ×2→2ⁿ | ×3→3ⁿ | ×4→4ⁿ</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال محلول — اشتقاق القانون</div>
+            <div class="ex-q">م1: [A]=0.1M, [B]=0.1M, r=2×10⁻⁵ | م2: [A]=0.2M, [B]=0.1M, r=4×10⁻⁵ | م3: [A]=0.1M, [B]=0.2M, r=2×10⁻⁵</div>
+            <div class="ex-steps">رتبة A: r₂/r₁=2=(0.2/0.1)ⁿ=2ⁿ → n=1<br>رتبة B: r₃/r₁=1=(0.2/0.1)ᵐ=2ᵐ → m=0<br>القانون: r=k[A] | k=2×10⁻⁵/0.1=2×10⁻⁴ s⁻¹</div>
+            <div class="ex-ans">✓ r=k[A] | k=2×10⁻⁴ s⁻¹</div>
+          </div></div>
+        </div>
+
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(121,134,203,.15);color:#7986cb">💡</div><span class="blbl">تأثير التركيز على السرعة — أمثلة</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>إذا r=k[A]²[B]: مضاعفة [A] فقط → r×4</li>
+            <li>إذا r=k[A]²[B]: مضاعفة [A] وثلاثة أضعاف [B] → r×4×3=×12</li>
+            <li>إذا r=k[A]²[B]: مضاعفة [A] ونصّف [B] → r×4×½=×2</li>
+            <li>رتبة صفرية: تغيير التركيز لا يغير السرعة أبداً</li>
+            <li>⚠️ لا تخلطي بين رتبة المادة والمعامل في المعادلة الموزونة</li>
+          </ul></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#880e4f,#ad1457);border-bottom-color:#f48fb1;">
+      <div class="lnum" style="color:#f48fb1">الدرس الثالث</div>
+      <div class="ltitle">عمر النصف للتفاعلات من الرتبة الأولى</div>
+    </div>
+    <div class="lesson-body">
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(244,143,177,.15);color:#f48fb1">⏱️</div><span class="blbl">التعريف والقانون والخصائص</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>الزمن اللازم لانقصان تركيز المادة المتفاعلة إلى <strong>نصف</strong> تركيزها الابتدائي</li>
+            <li><span class="chip">t½ = ln2/k = 0.693/k</span></li>
+            <li>t½ <strong>ثابت</strong> — لا يعتمد على التركيز الابتدائي (خاص بالرتبة الأولى)</li>
+            <li>t½ عكسي مع درجة الحرارة | k طردي مع درجة الحرارة</li>
+            <li>العلاقة بين k وt½: <span class="chip">k = 0.693/t½</span></li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — حساب t½</div>
+            <div class="ex-q">k = 2.4×10⁻³ s⁻¹ → احسب t½ بالدقائق</div>
+            <div class="ex-steps">t½ = 0.693/k = 0.693/(2.4×10⁻³) = 288.75 s<br>بالدقائق: 288.75÷60 = 4.81 دقيقة</div>
+            <div class="ex-ans">✓ t½ ≈ 4.81 دقيقة</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(244,143,177,.15);color:#f48fb1">📉</div><span class="blbl">حساب الكتلة المتبقية والزمن</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><span class="chip">T = t½ × n</span> — حيث n = عدد الفترات</li>
+            <li>n = T / t½ (لإيجاد عدد الفترات من الزمن الكلي)</li>
+            <li>كتلة متبقية = m₀ ÷ 2ⁿ</li>
+            <li>سلسلة التحلل: 100→50→25→12.5→6.25→3.125→1.56%</li>
+            <li>نسبة المتحلل = 100% − نسبة المتبقي</li>
+          </ul>
+          <table class="cmp-table" style="margin:8px 0 4px;">
+            <tr><th style="background:rgba(244,143,177,.2);color:#f48fb1">عدد الفترات n</th><th style="background:rgba(244,143,177,.2);color:#f48fb1">% متبقي</th><th style="background:rgba(244,143,177,.2);color:#f48fb1">% متحلل</th><th style="background:rgba(244,143,177,.2);color:#f48fb1">من 100g</th></tr>
+            <tr><td>1</td><td>50%</td><td>50%</td><td>50g</td></tr>
+            <tr><td>2</td><td>25%</td><td>75%</td><td>25g</td></tr>
+            <tr><td>3</td><td>12.5%</td><td>87.5%</td><td>12.5g</td></tr>
+            <tr><td>4</td><td>6.25%</td><td>93.75%</td><td>6.25g</td></tr>
+            <tr><td>5</td><td>3.125%</td><td>96.875%</td><td>3.125g</td></tr>
+          </table>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — زمن تحلل 97%</div>
+            <div class="ex-q">t½ = 6 ساعات. المدة حتى يتحلل 97%</div>
+            <div class="ex-steps">97% متحلل → 3% متبقي ≈ 3.125% بعد 5 فترات<br>T = 6 × 5 = 30 ساعة</div>
+            <div class="ex-ans">✓ T = 30 ساعة</div>
+          </div></div>
+        </div>
+
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(244,143,177,.15);color:#f48fb1">📈</div><span class="blbl">أنواع مسائل عمر النصف</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><strong>نوع A (من مخطط):</strong> اقرأ t½ من الرسم البياني → k=0.693/t½</li>
+            <li><strong>نوع B (يُعطى k أو t½):</strong> تعويض مباشر</li>
+            <li><strong>نوع C (كتلة متبقية):</strong> n=T/t½ → كتلة=m₀÷2ⁿ</li>
+            <li><strong>نوع D (نسبة تحلل):</strong> ارسم السلسلة حتى تصل للنسبة، احسب n</li>
+            <li><strong>نوع E (إيجاد t½ من التجربة):</strong> من التجربة اعرفي [A] عند t وعند نصفه</li>
+            <li>⚠️ في الرتبة الأولى: t½ ثابت في أي نقطة من المنحنى</li>
+          </ul></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ UNIT 5 ══════════════════ -->
+  </div>
+  <div class="tc" id="4-mcq"><div class="mcq-wrap" id="mw4"></div></div>
+  <div class="tc" id="4-essay"><div class="elist" id="el4"></div></div>
+</div>
+
+<!-- ══ U5 ══ -->
+<div class="section u5" id="s5">
+  <div class="sec-hd">
+    <div class="sec-title" style="color:var(--u5)">⚖️ الوحدة الخامسة: الاتزان</div>
+    <div class="sec-sub">مفهوم الاتزان وKeq | مبدأ لوشاتيليه | الاتزان الحمضي القاعدي</div>
+  </div>
+  <div class="tabs">
+    <button class="tb active" onclick="showTab('5','map',this)">🗺️ خريطة ذهنية</button>
+    <button class="tb" onclick="showTab('5','mcq',this)">✅ اختيارية (20)</button>
+    <button class="tb" onclick="showTab('5','essay',this)">✍️ مقالية (10)</button>
+  </div>
+  <div class="tc active" id="5-map">
+<div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#3e2000,#5d3a00);border-bottom-color:var(--u5);">
+      <div class="lnum" style="color:var(--u5)">الدرس الأول</div>
+      <div class="ltitle">مفهوم الاتزان وثابت الاتزان Keq</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u5b);color:var(--u5)">⚖️</div><span class="blbl">الاتزان الكيميائي وخصائصه</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>يحدث عندما تتساوى سرعة التفاعل الطردي = سرعة العكسي</li>
+            <li>اتزان <strong>ديناميكي</strong> وليس ساكناً — التفاعلات مستمرة</li>
+            <li>يحدث في أنظمة <strong>مغلقة</strong> فقط</li>
+            <li>تراكيز المواد ثابتة عند الاتزان (ليست متساوية بالضرورة)</li>
+            <li>لا يتأثر بالعوامل الخارجية من حيث قيمة Keq (فقط موضعه)</li>
+            <li>التفاعل الانعكاسي: يسير في الاتجاهين ← و→</li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u5b);color:var(--u5)">📐</div><span class="blbl">قانون فعل الكتلة وثابت الاتزان</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>للتفاعل: aA+bB⇌cC+dD</li>
+            <li><span class="chip">Kc = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ</span> (بالتراكيز mol/L)</li>
+            <li><span class="chip">Kp = Pᶜ(C)×Pᵈ(D) / Pᵃ(A)×Pᵇ(B)</span> (للغازات بالضغط)</li>
+            <li>المواد الصلبة والسوائل النقية <strong>لا تُكتب</strong> في تعبير K</li>
+            <li>K يعتمد على درجة الحرارة فقط</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال</div>
+            <div class="ex-q">N₂+3H₂⇌2NH₃: [H₂]=0.25M, [N₂]=0.32M, [NH₃]=0.45M → احسب Kc</div>
+            <div class="ex-steps">Kc = [NH₃]² / ([N₂][H₂]³) = (0.45)² / (0.32×0.25³)<br>= 0.2025 / (0.32×0.0156) = 0.2025/0.005 = 40.5 M⁻²</div>
+            <div class="ex-ans">✓ Kc = 40.5 M⁻²</div>
+          </div></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u5b);color:var(--u5)">🔍</div><span class="blbl">تفسير قيمة Keq وجدول ICE</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,213,79,.2);color:var(--u5)">قيمة Keq</th><th style="background:rgba(255,213,79,.2);color:var(--u5)">المعنى</th><th style="background:rgba(255,213,79,.2);color:var(--u5)">اتجاه الاتزان</th></tr>
+            <tr><td>Keq &gt;&gt;&gt; 1</td><td class="pos">التفاعل شبه مكتمل</td><td>نحو اليمين بشدة</td></tr>
+            <tr><td>Keq &gt; 1</td><td class="pos">النواتج أكثر</td><td>نحو اليمين</td></tr>
+            <tr><td>Keq = 1</td><td class="neu">متساوٍ</td><td>لا يميل</td></tr>
+            <tr><td>Keq &lt; 1</td><td class="neg">المتفاعلات أكثر</td><td>نحو اليسار</td></tr>
+            <tr><td>Keq &lt;&lt;&lt; 1</td><td class="neg">التفاعل لن يحدث تقريباً</td><td>نحو اليسار بشدة</td></tr>
+          </table>
+          <div class="rule-box" style="background:var(--u5b);border-right-color:var(--u5);margin-top:10px;">
+            <strong>جدول ICE:</strong><br>
+            I (Initial) = التركيز الابتدائي<br>
+            C (Change) = التغير (±x حسب المعاملات)<br>
+            E (Equilibrium) = I + C = التركيز عند الاتزان<br>
+            ثم عوّض في تعبير K وأوجدي x
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#2e1a00,#4a2e00);border-bottom-color:#ffa726;">
+      <div class="lnum" style="color:#ffa726">الدرس الثاني</div>
+      <div class="ltitle">مبدأ لوشاتيليه</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,167,38,.15);color:#ffa726">💡</div><span class="blbl">المبدأ والعامل الأول: التركيز</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>عند تعرض نظام متزن لمؤثر خارجي → يُزاح نحو الاتجاه الذي يُقلل أثر المؤثر</li>
+          </ul>
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,167,38,.2);color:#ffa726">التغيير</th><th style="background:rgba(255,167,38,.2);color:#ffa726">موضع الاتزان</th><th style="background:rgba(255,167,38,.2);color:#ffa726">تأثير على Kc</th></tr>
+            <tr><td>زيادة تركيز متفاعل</td><td class="pos">يزاح للیمین</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>زيادة تركيز ناتج</td><td class="neg">يزاح للیسار</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>نقص تركيز متفاعل</td><td class="neg">يزاح للیسار</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>نقص تركيز ناتج</td><td class="pos">يزاح للیمین</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>إضافة مادة صلبة</td><td class="neu">لا يتأثر</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>الأيون المشترك</td><td colspan="2">حسب موقع الأيون (متفاعل أم ناتج)</td></tr>
+          </table></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,167,38,.15);color:#ffa726">🌡️</div><span class="blbl">العامل الثاني: درجة الحرارة</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,167,38,.2);color:#ffa726">نوع التفاعل</th><th style="background:rgba(255,167,38,.2);color:#ffa726">رفع T</th><th style="background:rgba(255,167,38,.2);color:#ffa726">خفض T</th></tr>
+            <tr><td>طارد (ΔH=−)</td><td class="neg">يزاح للیسار، Kc يقل</td><td class="pos">يزاح للیمین، Kc يزداد</td></tr>
+            <tr><td>ماص (ΔH=+)</td><td class="pos">يزاح للیمین، Kc يزداد</td><td class="neg">يزاح للیسار، Kc يقل</td></tr>
+          </table>
+          <div class="rule-box" style="background:rgba(255,167,38,.07);border-right-color:#ffa726;margin-top:8px;">
+            ⚠️ <strong>درجة الحرارة هي العامل الوحيد الذي يغير قيمة Kc</strong>
+          </div></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,167,38,.15);color:#ffa726">🔬</div><span class="blbl">العامل الثالث: الضغط والعامل الحفاز</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,167,38,.2);color:#ffa726">التغيير</th><th style="background:rgba(255,167,38,.2);color:#ffa726">موضع الاتزان</th><th style="background:rgba(255,167,38,.2);color:#ffa726">Kc</th></tr>
+            <tr><td>زيادة الضغط</td><td>نحو الجهة الأقل مولات غازية</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>تقليل الضغط</td><td>نحو الجهة الأكثر مولات غازية</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>تساوي مولات الغاز</td><td class="neu">لا يتأثر الموضع</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>إضافة غاز خامل (He)</td><td class="neu">لا يتأثر الموضع</td><td class="neu">لا يتغير</td></tr>
+            <tr><td>العامل الحفاز</td><td class="neu">لا يتأثر الموضع</td><td class="neu">لا يتغير</td></tr>
+          </table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#1a0a00,#3d1a00);border-bottom-color:#ff8a65;">
+      <div class="lnum" style="color:#ff8a65">الدرس الثالث</div>
+      <div class="ltitle">الاتزان في المحاليل الحمضية والقاعدية</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,138,101,.15);color:#ff8a65">🧲</div><span class="blbl">نظريتا برونستد-لوري وأرهينيوس</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,138,101,.2);color:#ff8a65">الجانب</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">أرهينيوس</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">برونستد-لوري</th></tr>
+            <tr><td>الحمض</td><td>ينتج H⁺ في الماء</td><td>مانح للبروتون H⁺</td></tr>
+            <tr><td>القاعدة</td><td>تنتج OH⁻ في الماء</td><td>مستقبلة للبروتون H⁺</td></tr>
+            <tr><td>شرط وجود الماء</td><td>ضروري</td><td>غير ضروري</td></tr>
+            <tr><td>الأزواج المرافقة</td><td>غير موجودة</td><td>موجودة (تختلف بـH⁺)</td></tr>
+          </table>
+          <ul class="lv" style="margin-top:6px;">
+            <li>المادة الأمفوتيرية: تسلك سلوك الحمض أو القاعدة حسب ما تتفاعل معه</li>
+            <li>أمثلة: H₂O, HCO₃⁻, HS⁻, H₂PO₄⁻, HSO₃⁻</li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,138,101,.15);color:#ff8a65">💧</div><span class="blbl">تأين الماء وKw وpH</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>2H₂O ⇌ H₃O⁺ + OH⁻</li>
+            <li><span class="chip">Kw = [H⁺][OH⁻] = 1×10⁻¹⁴</span> عند 25°C</li>
+            <li>الماء النقي: [H⁺]=[OH⁻]=1×10⁻⁷M</li>
+            <li><span class="chip">pH = −log[H⁺]</span> | <span class="chip">pOH = −log[OH⁻]</span></li>
+            <li><span class="chip">pH + pOH = 14</span></li>
+            <li><span class="chip">[H⁺] = 10⁻ᵖᴴ</span> | <span class="chip">[OH⁻] = 10⁻ᵖᴼᴴ</span></li>
+          </ul>
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,138,101,.2);color:#ff8a65">نوع المحلول</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">pH</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">العلاقة</th></tr>
+            <tr><td class="neg">حمضي</td><td class="neg">pH &lt; 7</td><td>[H⁺] &gt; [OH⁻]</td></tr>
+            <tr><td class="neu">متعادل</td><td class="neu">pH = 7</td><td>[H⁺] = [OH⁻]</td></tr>
+            <tr><td class="pos">قاعدي</td><td class="pos">pH &gt; 7</td><td>[OH⁻] &gt; [H⁺]</td></tr>
+          </table></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,138,101,.15);color:#ff8a65">⚗️</div><span class="blbl">الأحماض والقواعد القوية والضعيفة</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,138,101,.2);color:#ff8a65">النوع</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">التأين</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">حساب [H⁺]</th><th style="background:rgba(255,138,101,.2);color:#ff8a65">أمثلة</th></tr>
+            <tr><td>حمض قوي</td><td>100%</td><td>[H⁺]=[حمض]</td><td>HCl, HBr, HNO₃, H₂SO₄</td></tr>
+            <tr><td>حمض ضعيف</td><td>&lt;100%</td><td>[H⁺]=√(Ka×[HA])</td><td>CH₃COOH, HCN, HF, H₂S</td></tr>
+            <tr><td>قاعدة قوية</td><td>100%</td><td>[OH⁻]=[قاعدة]</td><td>NaOH, KOH, Ca(OH)₂</td></tr>
+            <tr><td>قاعدة ضعيفة</td><td>&lt;100%</td><td>[OH⁻]=√(Kb×[B])</td><td>NH₃, CH₃NH₂</td></tr>
+          </table>
+          <ul class="lv" style="margin-top:6px;">
+            <li><span class="chip">Ka × Kb = Kw = 10⁻¹⁴</span> | <span class="chip">pKa + pKb = 14</span></li>
+            <li>كلما زادت Ka زادت قوة الحمض وقل pH</li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,138,101,.15);color:#ff8a65">🛡️</div><span class="blbl">المحاليل المنظمة Buffer وأدلة الحمض</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>Buffer: يقاوم التغير المفاجئ في pH</li>
+            <li>منظم حمضي: حمض ضعيف + ملح قاعدته المرافقة</li>
+            <li>منظم قاعدي: قاعدة ضعيفة + ملح حمضها المرافق</li>
+            <li><span class="chip">pH = pKa + log([A⁻]/[HA])</span> (هندرسون-هاسلبالش)</li>
+            <li><span class="chip">pOH = pKb + log([BH⁺]/[B])</span></li>
+            <li>دليل الحمض والقاعدة: يختار حسب pH التعادل</li>
+            <li><span class="chip">pKIn = (بداية المدى + نهاية المدى) / 2</span></li>
+            <li>الدم: pH=7.35–7.45 | نظام H₂CO₃/HCO₃⁻ الأساسي</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ UNIT 6 ══════════════════ -->
+  </div>
+  <div class="tc" id="5-mcq"><div class="mcq-wrap" id="mw5"></div></div>
+  <div class="tc" id="5-essay"><div class="elist" id="el5"></div></div>
+</div>
+
+<!-- ══ U6 ══ -->
+<div class="section u6" id="s6">
+  <div class="sec-hd">
+    <div class="sec-title" style="color:var(--u6)">🔥 الوحدة السادسة: المحتوى الحراري وقانون هس</div>
+    <div class="sec-sub">Q=mcΔT | ΔH وأنواع التفاعلات | قانون هس وΔH°f</div>
+  </div>
+  <div class="tabs">
+    <button class="tb active" onclick="showTab('6','map',this)">🗺️ خريطة ذهنية</button>
+    <button class="tb" onclick="showTab('6','mcq',this)">✅ اختيارية (20)</button>
+    <button class="tb" onclick="showTab('6','essay',this)">✍️ مقالية (10)</button>
+  </div>
+  <div class="tc active" id="6-map">
+<div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#5d1a00,#8d2e00);border-bottom-color:var(--u6);">
+      <div class="lnum" style="color:var(--u6)">الدرس الأول</div>
+      <div class="ltitle">المحتوى الحراري</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u6b);color:var(--u6)">🌡️</div><span class="blbl">قانون Q=mcΔT والمسعر الحراري</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><span class="chip">Q = m × c × ΔT</span></li>
+            <li>m: الكتلة (g) أو (kg) — يجب توحيد الوحدة مع c</li>
+            <li>c: الحرارة النوعية (J/g·°C) أو (kJ/kg·K) — للماء=4.184</li>
+            <li>ΔT = T₂ − T₁ (يمكن أن تكون موجبة أو سالبة)</li>
+            <li>Q موجبة (+) = امتصاص حرارة (ماص)</li>
+            <li>Q سالبة (−) = إطلاق حرارة (طارد)</li>
+            <li>في المسعر الحراري: <span class="chip">Q_reaction + Q_water = 0</span></li>
+            <li>الطاقة المكتسبة = الطاقة المنطلقة (قانون حفظ الطاقة)</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — جسمان يتبادلان الحرارة</div>
+            <div class="ex-q">حديد 500g عند 90°C + ماء 400g عند 10°C. c(Fe)=0.473, c(ماء)=4.184</div>
+            <div class="ex-steps">Q_Fe = −Q_water<br>500×0.473×(Tf−90) = −400×4.184×(Tf−10)<br>236.5(Tf−90) = −1673.6(Tf−10)<br>حل → Tf ≈ 14.5°C</div>
+            <div class="ex-ans">✓ Tf ≈ 14.5°C</div>
+          </div></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u6b);color:var(--u6)">🔥</div><span class="blbl">المحتوى الحراري H وأنواع التفاعلات</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,138,101,.2);color:var(--u6)">الجانب</th><th style="background:rgba(255,138,101,.2);color:var(--u6)">تفاعل طارد</th><th style="background:rgba(255,138,101,.2);color:var(--u6)">تفاعل ماص</th></tr>
+            <tr><td>إشارة ΔH</td><td class="neg">ΔH = − (سالبة)</td><td class="pos">ΔH = + (موجبة)</td></tr>
+            <tr><td>الحرارة</td><td>يُطلق للمحيط</td><td>يمتص من المحيط</td></tr>
+            <tr><td>درجة حرارة الوسط</td><td class="pos">ترتفع T↑</td><td class="neg">تنخفض T↓</td></tr>
+            <tr><td>طاقة النواتج</td><td class="pos">أقل من المتفاعلات</td><td class="neg">أعلى من المتفاعلات</td></tr>
+            <tr><td>مثال</td><td>احتراق الوقود</td><td>إذابة NH₄NO₃</td></tr>
+          </table>
+          <ul class="lv" style="margin-top:6px;">
+            <li>التحولات الطورية: انصهار/تبخر/تسامي → ماص (ΔH=+)</li>
+            <li>تجمد/تكثف/ترسيب → طارد (ΔH=−)</li>
+          </ul></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u6b);color:var(--u6)">⭐</div><span class="blbl">الحالة القياسية وحرارتا الاحتراق والتكوين</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><strong>الحالة القياسية:</strong> 25°C (298K) | 1atm | تركيز 1M</li>
+            <li>يُرمز لها بـ ΔH° (بعلامة درجة)</li>
+          </ul>
+          <table class="cmp-table">
+            <tr><th style="background:rgba(255,138,101,.2);color:var(--u6)">النوع</th><th style="background:rgba(255,138,101,.2);color:var(--u6)">ΔH°c (احتراق)</th><th style="background:rgba(255,138,101,.2);color:var(--u6)">ΔH°f (تكوين)</th></tr>
+            <tr><td>التعريف</td><td>حرارة احتراق 1mol كاملاً بـO₂</td><td>حرارة تكوين 1mol من عناصره</td></tr>
+            <tr><td>الإشارة</td><td class="neg">دائماً ΔH &lt; 0</td><td>+ أو − (يعتمد)</td></tr>
+            <tr><td>شرط المتفاعلات</td><td>المادة + O₂ كافٍ</td><td>عناصر في حالتها القياسية</td></tr>
+            <tr><td>شرط النواتج</td><td>CO₂ (غاز) + H₂O</td><td>1mol من المادة فقط</td></tr>
+            <tr><td>ΔH للعناصر</td><td>لها قيمة</td><td class="neu">= صفر دائماً</td></tr>
+          </table>
+          <div class="rule-box" style="background:var(--u6b);border-right-color:var(--u6);margin-top:8px;">
+            ⚠️ إذا تكوّن CO بدل CO₂ → <strong>ليست</strong> حرارة احتراق قياسية<br>
+            ⚠️ إذا احترق أكثر من 1mol → <strong>ليست</strong> حرارة تكوين قياسية
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#4a1000,#7a1f00);border-bottom-color:#ffcc80;">
+      <div class="lnum" style="color:#ffcc80">الدرس الثاني</div>
+      <div class="ltitle">قانون هس</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,204,128,.15);color:#ffcc80">📜</div><span class="blbl">نص القانون وقواعد التطبيق</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>التغير الكلي في المحتوى الحراري = ثابت بغض النظر عن عدد الخطوات أو مسار التفاعل</li>
+            <li>مبني على قانون حفظ الطاقة</li>
+            <li><strong>قاعدة 1 — عكس المعادلة:</strong> اقلب إشارة ΔH</li>
+            <li><strong>قاعدة 2 — ضرب المعادلة في n:</strong> اضرب ΔH في n</li>
+            <li><strong>قاعدة 3 — قسمة المعادلة:</strong> اقسم ΔH على نفس العدد</li>
+            <li><strong>قاعدة 4 — جمع المعادلات:</strong> اجمع جميع قيم ΔH</li>
+            <li>المواد التي تظهر في طرفي المعادلة تُحذف (تُلغى)</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — قانون هس</div>
+            <div class="ex-q">أوجد ΔH للتفاعل: H₂O+C→H₂+CO<br>① H₂+½O₂→H₂O ΔH=−242kJ<br>② 2CO→2C+O₂ ΔH=+221kJ</div>
+            <div class="ex-steps">① اعكس: H₂O→H₂+½O₂ ΔH=+242kJ<br>② اقسم على 2: C+½O₂→CO ΔH=−110.5kJ<br>اجمع: H₂O+C→H₂+CO<br>ΔH=+242+(−110.5)=+131.5kJ</div>
+            <div class="ex-ans">✓ ΔH = +131.5 kJ</div>
+          </div></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,204,128,.15);color:#ffcc80">🧮</div><span class="blbl">حساب ΔH°r من حرارات التكوين</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><span class="chip">ΔH°r = Σ(n×ΔH°f نواتج) − Σ(m×ΔH°f متفاعلات)</span></li>
+            <li>n, m = معاملات المعادلة الموزونة</li>
+            <li>ΔH°f للعناصر = صفر دائماً (O₂, H₂, N₂, C(s), S(s)...)</li>
+            <li>إذا طُلب ΔH لكمية معينة: احسب n=m/mm ثم ΔH=n×ΔH°r</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — ΔH°r من الجدول</div>
+            <div class="ex-q">2C₂H₆+7O₂→4CO₂+6H₂O<br>ΔH°f: C₂H₆=−83.8, CO₂=−393.5, H₂O=−241.8 kJ/mol</div>
+            <div class="ex-steps">نواتج: 4×(−393.5)+6×(−241.8)=−1574+(−1450.8)=−3024.8<br>متفاعلات: 2×(−83.8)+7×0=−167.6<br>ΔH°r=−3024.8−(−167.6)=−2857.2 kJ</div>
+            <div class="ex-ans">✓ ΔH°r = −2857.2 kJ | ΔH°c لإيثان = −1428.6 kJ/mol</div>
+          </div></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(255,204,128,.15);color:#ffcc80">🔁</div><span class="blbl">دورة هس البيانية</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>طريقة بيانية بديلة: المتفاعلات ← العناصر → النواتج</li>
+            <li><span class="chip">ΔHc = ΔH₂ − ΔH₁</span></li>
+            <li>ΔH₁ = مجموع حرارات تكوين المتفاعلات (من العناصر)</li>
+            <li>ΔH₂ = مجموع حرارات تكوين النواتج (من العناصر)</li>
+            <li>السهم النازل (تكوين) = ΔH سالب عادةً</li>
+            <li>السهم الصاعد (تفكك) = عكس ΔH التكوين</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ UNIT 7 ══════════════════ -->
+  </div>
+  <div class="tc" id="6-mcq"><div class="mcq-wrap" id="mw6"></div></div>
+  <div class="tc" id="6-essay"><div class="elist" id="el6"></div></div>
+</div>
+
+<!-- ══ U7 ══ -->
+<div class="section u7" id="s7">
+  <div class="sec-hd">
+    <div class="sec-title" style="color:var(--u7)">🌀 الوحدة السابعة: الانتروبي والطاقة الحرة</div>
+    <div class="sec-sub">الانتروبي S | تغيرات ΔS° | طاقة جبس ΔG</div>
+  </div>
+  <div class="tabs">
+    <button class="tb active" onclick="showTab('7','map',this)">🗺️ خريطة ذهنية</button>
+    <button class="tb" onclick="showTab('7','mcq',this)">✅ اختيارية (20)</button>
+    <button class="tb" onclick="showTab('7','essay',this)">✍️ مقالية (10)</button>
+  </div>
+  <div class="tc active" id="7-map">
+<div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#003a47,#005066);border-bottom-color:var(--u7);">
+      <div class="lnum" style="color:var(--u7)">الدرس الأول</div>
+      <div class="ltitle">الانتروبي — Entropy (S)</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u7b);color:var(--u7)">🌪️</div><span class="blbl">التعريف والتلقائية</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>الانتروبي S = مقياس درجة العشوائية (الفوضى) في النظام</li>
+            <li>التلقائية = حدوث التفاعل بشكل طبيعي بدون تأثير خارجي</li>
+            <li>النظام يفضل: المحتوى الحراري المنخفض (ΔH=−) والانتروبي المرتفع (ΔS=+)</li>
+            <li>ΔS = + عند زيادة العشوائية (من النظام إلى الفوضى)</li>
+            <li>ΔS = − عند نقص العشوائية (من الفوضى إلى النظام)</li>
+            <li>مو(s) &lt; مو(l) &lt; مو(g) — الغاز أكثر عشوائية</li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u7b);color:var(--u7)">📊</div><span class="blbl">العوامل التي تزيد/تقل الانتروبي</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(128,222,234,.2);color:var(--u7)">العامل</th><th style="background:rgba(128,222,234,.2);color:var(--u7)">يزيد ΔS=+</th><th style="background:rgba(128,222,234,.2);color:var(--u7)">يقل ΔS=−</th></tr>
+            <tr><td>الحالة الفيزيائية</td><td>صلب→سائل→غاز</td><td>غاز→سائل→صلب</td></tr>
+            <tr><td>العمليات</td><td>انصهار، تبخر، تسامي</td><td>تجمد، تكثف، ترسيب</td></tr>
+            <tr><td>مولات الغاز</td><td>نواتج أكثر مولات غازية</td><td>متفاعلات أكثر مولات غازية</td></tr>
+            <tr><td>درجة الحرارة</td><td>ترتفع T</td><td>تنخفض T</td></tr>
+            <tr><td>الإذابة</td><td>إذابة مادة صلبة</td><td>ترسيب من محلول</td></tr>
+            <tr><td>حجم الغاز</td><td>يزداد الحجم</td><td>يقل الحجم</td></tr>
+          </table></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:var(--u7b);color:var(--u7)">🔬</div><span class="blbl">كيف تحدد إشارة ΔS من المعادلة</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><strong>خطوة 1:</strong> قارن مولات الغاز (g) في النواتج والمتفاعلات</li>
+            <li>مولات غاز النواتج > المتفاعلات → ΔS = +</li>
+            <li>مولات غاز النواتج &lt; المتفاعلات → ΔS = −</li>
+            <li><strong>خطوة 2:</strong> إذا تساوت مولات الغاز → انظر للحالة الفيزيائية</li>
+            <li>صلب/سائل → غاز = ΔS = + | غاز → صلب/سائل = ΔS = −</li>
+            <li><strong>خطوة 3:</strong> انظر عدد الجسيمات الذائبة (aq)</li>
+            <li>⚠️ إذا صعب التحديد → اكتبي "يصعب توقع إشارة ΔS"</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#002030,#003347);border-bottom-color:#4dd0e1;">
+      <div class="lnum" style="color:#4dd0e1">الدرس الثاني</div>
+      <div class="ltitle">تغيرات الانتروبي في التفاعلات الكيميائية</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(77,208,225,.15);color:#4dd0e1">🌡️</div><span class="blbl">الانتروبي المطلق S° والقانون الثالث</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><strong>القانون الثالث:</strong> عند 0K → انتروبي النظام المثالي = صفر</li>
+            <li>S° = الانتروبي المطلق القياسي عند 25°C</li>
+            <li>وحدته: <span class="chip-b chip">J/mol·K</span></li>
+            <li>⚠️ S° للعناصر ≠ صفر (بخلاف ΔH°f التي = صفر)</li>
+            <li>الحالة الفيزيائية تؤثر كبيراً: S°(g) >> S°(l) > S°(s)</li>
+            <li>مثال: Fe(s)=27.15 | Fe(g)=180.5 J/mol·K</li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(77,208,225,.15);color:#4dd0e1">🧮</div><span class="blbl">حساب ΔS° وتفسيره</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><span class="chip">ΔS° = Σ(n×S°نواتج) − Σ(m×S°متفاعلات)</span></li>
+            <li>n, m = معاملات المعادلة الموزونة</li>
+            <li>ΔS°=+ → انتروبي النواتج أكبر (زيادة عشوائية)</li>
+            <li>ΔS°=− → انتروبي النواتج أقل (نقصان عشوائية)</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال محلول</div>
+            <div class="ex-q">4Fe(s)+3O₂(g)→2Fe₂O₃(s)<br>S°: Fe=27.15, O₂=205, Fe₂O₃=89.96 J/mol·K</div>
+            <div class="ex-steps">ΔS°=[2×89.96]−[(4×27.15)+(3×205)]<br>=179.92−[108.6+615]=179.92−723.6</div>
+            <div class="ex-ans">✓ ΔS° = −543.7 J/mol·K (نقصان — متوقع لأن غاز يتحول لصلب)</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson">
+    <div class="lesson-hd" style="background:linear-gradient(135deg,#001520,#002535);border-bottom-color:#80cbc4;">
+      <div class="lnum" style="color:#80cbc4">الدرس الثالث</div>
+      <div class="ltitle">طاقة جبس الحرة — Gibbs Free Energy (ΔG)</div>
+    </div>
+    <div class="lesson-body">
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(128,203,196,.15);color:#80cbc4">⚡</div><span class="blbl">التعريف والقانون والتلقائية</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>أقصى كمية شغل يمكن الحصول عليها من نظام مغلق</li>
+            <li><span class="chip">ΔG° = ΔH° − T × ΔS°</span></li>
+            <li>⚠️ T لازم تكون بالكلفن دائماً: T(K) = T(°C) + 273</li>
+            <li>⚠️ وحّد الوحدات: إذا ΔH بالـ kJ وΔS بالـ J → اقسم ΔS على 1000</li>
+            <li>ΔG &lt; 0 → التفاعل <strong>تلقائي</strong></li>
+            <li>ΔG &gt; 0 → التفاعل <strong>غير تلقائي</strong></li>
+            <li>ΔG = 0 → النظام في حالة <strong>اتزان</strong></li>
+          </ul></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(128,203,196,.15);color:#80cbc4">📋</div><span class="blbl">الحالات الأربعة للتلقائية</span><span class="chv">▼</span></div>
+          <div class="bcnt">
+          <table class="cmp-table">
+            <tr><th style="background:rgba(128,203,196,.2);color:#80cbc4">ΔH°</th><th style="background:rgba(128,203,196,.2);color:#80cbc4">ΔS°</th><th style="background:rgba(128,203,196,.2);color:#80cbc4">ΔG°</th><th style="background:rgba(128,203,196,.2);color:#80cbc4">التلقائية</th></tr>
+            <tr><td class="neg">− (طارد)</td><td class="pos">+ (يزداد)</td><td class="neg">سالبة دائماً</td><td class="pos">✅ تلقائي عند كل درجات الحرارة</td></tr>
+            <tr><td class="pos">+ (ماص)</td><td class="neg">− (يقل)</td><td class="pos">موجبة دائماً</td><td class="neg">❌ غير تلقائي أبداً</td></tr>
+            <tr><td class="pos">+ (ماص)</td><td class="pos">+ (يزداد)</td><td class="neu">تعتمد على T</td><td class="pos">✅ تلقائي عند T <strong>العالية</strong> فقط</td></tr>
+            <tr><td class="neg">− (طارد)</td><td class="neg">− (يقل)</td><td class="neu">تعتمد على T</td><td class="pos">✅ تلقائي عند T <strong>المنخفضة</strong> فقط</td></tr>
+          </table></div>
+        </div>
+      </div>
+      <div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(128,203,196,.15);color:#80cbc4">🔗</div><span class="blbl">الطاقة الحرة والاتزان وإيجاد T</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li>عند نقطة الاتزان: <span class="chip">ΔG = 0 → T = ΔH / ΔS</span></li>
+            <li>ΔG &lt; 0: يسير للطردي (متفاعلات → نواتج)</li>
+            <li>ΔG &gt; 0: يسير للعكسي (نواتج → متفاعلات)</li>
+            <li>ΔG = 0: لا يميل لأي اتجاه — اتزان</li>
+            <li>⚠️ التلقائية لا تعني السرعة — تفاعل تلقائي قد يكون بطيئاً جداً</li>
+          </ul>
+          <div class="ex-box">
+            <div class="ex-title">✏️ مثال — إيجاد T عند الاتزان</div>
+            <div class="ex-q">C₆H₆(l)⇌C₆H₆(s): ΔH°=−9.83 kJ/mol | ΔS°=−35.2 J/mol·K</div>
+            <div class="ex-steps">ΔS°=−35.2/1000=−0.0352 kJ/mol·K<br>T=ΔH/ΔS=−9.83/(−0.0352)=279.26K<br>T=279.26−273=6.26°C</div>
+            <div class="ex-ans">✓ T=279.26K=6.26°C (نقطة تجمد البنزين)</div>
+          </div></div>
+        </div>
+        <div class="branch">
+          <div class="btog" onclick="tog(this)"><div class="bico" style="background:rgba(128,203,196,.15);color:#80cbc4">🧮</div><span class="blbl">أنواع مسائل ΔG وخطوات الحل</span><span class="chv">▼</span></div>
+          <div class="bcnt"><ul class="lv">
+            <li><strong>نوع A — يُعطى ΔH° وΔS°:</strong><br>① T بالكلفن ② وحّد الوحدات ③ عوّض في ΔG=ΔH−TΔS ④ احكمي على التلقائية</li>
+            <li><strong>نوع B — يُعطى جدول S° وΔH°f:</strong><br>① احسب ΔH°r ② احسب ΔS°r ③ عوّض في ΔG</li>
+            <li><strong>نوع C — إيجاد T عند ΔG=0:</strong><br>T = ΔH/ΔS (بعد توحيد الوحدات)</li>
+            <li><strong>نوع D — إيجاد ΔS عند ΔG=0 وT معطاة:</strong><br>ΔS = ΔH/T</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="tc" id="7-mcq"><div class="mcq-wrap" id="mw7"></div></div>
+  <div class="tc" id="7-essay"><div class="elist" id="el7"></div></div>
+</div>
+
+<script>
+/* ═══ NAV & TABS ═══ */
+function showSec(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function showTab(u,t,btn){
+  const sec=document.getElementById('s'+u);
+  sec.querySelectorAll('.tc').forEach(x=>x.classList.remove('active'));
+  sec.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+  document.getElementById(u+'-'+t).classList.add('active');
+  btn.classList.add('active');
+  if(t==='mcq') initMCQ(u);
+  if(t==='essay') initEssay(u);
+}
+function tog(b){b.parentElement.classList.toggle('open');}
+
+/* ═══ ALL MCQ DATA ═══ */
+const Q={
+'4':[
+  {q:"ما تعريف سرعة التفاعل الكيميائي؟",o:["كمية الحرارة المنطلقة","التغير في تركيز المادة في وحدة الزمن","عدد التصادمات الكلية","الزمن اللازم لاكتمال التفاعل"],a:1,f:"سرعة التفاعل = التغير في تركيز المادة الناتجة أو المتفاعلة في وحدة الزمن، وقيمتها موجبة دائماً."},
+  {q:"في التفاعل: N₂+3H₂→2NH₃، إذا كان Δ[H₂]=−0.6M فما Δ[NH₃]؟",o:["0.2M","0.4M","0.6M","0.9M"],a:1,f:"Δ[NH₃]=(2/3)×0.6=0.4M بنسبة المعاملات 2:3."},
+  {q:"في التفاعل: 2NO+2H₂→N₂+2H₂O، ما العلاقة بين سرعة استهلاك NO وسرعة تكوين N₂؟",o:["متساويتان","r(NO)=2×r(N₂)","r(N₂)=2×r(NO)","لا علاقة"],a:1,f:"نسبة معامل NO:N₂ = 2:1 إذاً r(NO)=2×r(N₂)."},
+  {q:"ما شروط التصادم الفعال؟",o:["طاقة كافية فقط","اتجاه مناسب فقط","طاقة كافية + اتجاه فراغي مناسب","سرعة عالية فقط"],a:2,f:"يجب توفر شرطين: طاقة ≥ طاقة التنشيط، والاتجاه الفراغي المناسب."},
+  {q:"أي التفاعلات الأبطأ؟\nأ) 2Na⁺+2Cl⁻→2NaCl\nب) 2H₂+Cl₂→2HCl\nج) N₂+2O₂→2NO₂",o:["أ","ب","ج","أ وب معاً"],a:2,f:"N₂(N≡N) رابطة ثلاثية — أصعب كسراً → أبطأ."},
+  {q:"لماذا تتفاعل برادة الحديد مع HCl بسرعة أكبر من قطعة الحديد؟",o:["درجة حرارتها أعلى","تركيزها أعلى","مساحة سطحها أكبر","نشاطها الكيميائي أعلى"],a:2,f:"تقسيم المادة → مساحة سطح أكبر → تصادمات فعالة أكثر."},
+  {q:"لماذا تتأكسد المواد بسرعة أكبر في الأكسجين النقي عن الهواء؟",o:["الأكسجين النقي أثقل","نسبة O₂ في الهواء 21% بينما النقي 100% → تصادمات أكثر","الهواء يحتوي نيتروجين يبطئ التفاعل","لا فرق بينهما"],a:1,f:"تركيز O₂ أعلى في الأكسجين النقي → عدد جسيماته في الحجم أكثر → تصادمات فعالة أكثر."},
+  {q:"ما تأثير العامل الحفاز على طاقة التنشيط وموضع الاتزان؟",o:["يزيد طاقة التنشيط ولا يؤثر على الاتزان","يقلل طاقة التنشيط ويزيح الاتزان للیمین","يقلل طاقة التنشيط للطردي والعكسي ولا يؤثر على الاتزان","يزيد سرعة الطردي فقط"],a:2,f:"الحفاز يقلل طاقة التنشيط للطردي والعكسي بنفس المقدار → لا يؤثر على موضع الاتزان ولا Keq."},
+  {q:"ما الفرق بين الرتبة الأولى والثانية عند مضاعفة التركيز؟",o:["رتبة أولى: ×2 سرعة | ثانية: ×2 سرعة","رتبة أولى: ×2 سرعة | ثانية: ×4 سرعة","رتبة أولى: ×4 سرعة | ثانية: ×2 سرعة","كلتاهما: ×4 سرعة"],a:1,f:"رتبة أولى: r=k(2A)¹=2kA أي ×2. رتبة ثانية: r=k(2A)²=4kA² أي ×4."},
+  {q:"إذا كان r=k[A]²[B]³، ما وحدة k؟",o:["s⁻¹","M⁻¹s⁻¹","M⁻⁴s⁻¹","Ms⁻¹"],a:2,f:"الرتبة الكلية=5، وحدة k=M^(1−5)·s⁻¹=M⁻⁴·s⁻¹"},
+  {q:"كيف تُحدَّد رتبة التفاعل؟",o:["من المعادلة الموزونة","من معاملات المواد","من التجربة العملية","من نظرية التصادم"],a:2,f:"رتبة التفاعل تُحدَّد دائماً من التجربة وليس من المعادلة الموزونة."},
+  {q:"في التجربتين: r₁=2×10⁻⁵ [A]₁=0.1M، r₂=4×10⁻⁵ [A]₂=0.2M ([B] ثابت)\nما رتبة A؟",o:["صفرية","أولى","ثانية","ثالثة"],a:1,f:"r₂/r₁=2=(0.2/0.1)ⁿ=2ⁿ → n=1"},
+  {q:"إذا كان r=k[A]²[B] وضاعفنا [A] للضعف وثلثنا [B]، بكم تتضاعف السرعة؟",o:["4 مرات","6 مرات","12 مرة","9 مرات"],a:2,f:"r=k(2)²(3)=4×3=12 أضعاف."},
+  {q:"ما تعريف عمر النصف t½؟",o:["نصف الزمن الكلي","الزمن لتحلل نصف كمية المادة","الزمن لمضاعفة التركيز","الزمن للوصول للاتزان"],a:1,f:"عمر النصف = الزمن اللازم لانقصان التركيز إلى نصفه."},
+  {q:"ما القانون الصحيح لحساب t½ في تفاعل الرتبة الأولى؟",o:["t½=k/ln2","t½=ln2/k","t½=1/k","t½=k"],a:1,f:"t½=ln2/k=0.693/k — خاص بالرتبة الأولى فقط."},
+  {q:"إذا كان t½=6 ساعات، كم المدة حتى يتحلل 97%؟",o:["18 ساعة","24 ساعة","30 ساعة","36 ساعة"],a:2,f:"100→50→25→12.5→6.25→3.125% = 5 فترات × 6 = 30 ساعة."},
+  {q:"100g من مادة مشعة t½=5 أيام. الكتلة بعد 20 يوم؟",o:["25g","12.5g","6.25g","3.125g"],a:2,f:"n=20/5=4 فترات. كتلة=100÷2⁴=100÷16=6.25g"},
+  {q:"ما العلاقة بين t½ وثابت السرعة k ودرجة الحرارة؟",o:["كلاهما طردي مع T","t½ عكسي مع T وk طردي مع T","كلاهما عكسي مع T","t½ طردي وk عكسي مع T"],a:1,f:"رفع T → k يزداد → t½=ln2/k يقل. إذاً t½ عكسي وk طردي مع T."},
+  {q:"إذا تناقص تركيز مادة من 0.4M إلى 0.2M خلال 90s، كم الزمن للتناقص من 0.8M إلى 0.1M؟",o:["90s","180s","270s","360s"],a:2,f:"0.4→0.2 = فترة واحدة = 90s. إذاً t½=90s. ثم 0.8→0.4→0.2→0.1 = 3 فترات = 270s."},
+  {q:"إذا كان t½=15.37s لتفاعل رتبة أولى، كم الزمن ليبقى 12.5% من المادة؟",o:["15.37s","30.74s","46.11s","61.48s"],a:2,f:"100→50→25→12.5% = 3 فترات. T=15.37×3=46.11s"}
+],
+'5':[
+  {q:"متى يحدث الاتزان الكيميائي؟",o:["عند اكتمال التفاعل","عندما تتساوى التراكيز","عندما تتساوى سرعتا الطردي والعكسي","عندما تنتهي المتفاعلات"],a:2,f:"الاتزان يحدث عندما تتساوى سرعة الطردي = سرعة العكسي."},
+  {q:"ما الصيغة الصحيحة لـ Kc للتفاعل: aA+bB⇌cC+dD؟",o:["[A]ᵃ[B]ᵇ/[C]ᶜ[D]ᵈ","[C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ","[C][D]/[A][B]","([C]+[D])/([A]+[B])"],a:1,f:"Kc=[نواتج]^معاملاتها / [متفاعلات]^معاملاتها"},
+  {q:"ماذا يعني Keq>>>1؟",o:["المتفاعلات أكثر بكثير","النواتج والمتفاعلات متساوية","التفاعل شبه مكتمل نحو اليمين","التفاعل لم يبدأ"],a:2,f:"Keq>>>1 → النواتج أكثر بكثير → التفاعل شبه مكتمل."},
+  {q:"ما العامل الوحيد الذي يغير قيمة Kc؟",o:["التركيز","الضغط","درجة الحرارة","العامل الحفاز"],a:2,f:"درجة الحرارة هي العامل الوحيد الذي يغير قيمة Kc."},
+  {q:"في التفاعل الطارد: A+B⇌C+D+طاقة، عند رفع درجة الحرارة:",o:["يزاح للیمین وKc يزداد","يزاح للیسار وKc يقل","يزاح للیمین وKc لا يتغير","يزاح للیسار وKc لا يتغير"],a:1,f:"رفع T في تفاعل طارد → يزاح للاتجاه الماص (يسار) → Kc يقل."},
+  {q:"في التفاعل: N₂O₄(g)⇌2NO₂(g)، عند زيادة الضغط يتجه النظام:",o:["للیمین (نحو 2 mol)","للیسار (نحو 1 mol)","لا يتغير","للاتزان مباشرة"],a:1,f:"زيادة الضغط → نحو الجهة الأقل مولات غازية = N₂O₄ (1 mol) → يسار."},
+  {q:"ما تأثير إضافة العامل الحفاز على موضع الاتزان؟",o:["يزيحه للیمین","يزيحه للیسار","لا يؤثر عليه","يجعله يصل للاتزان أسرع دون تغيير موضعه"],a:3,f:"الحفاز يسرع الوصول للاتزان دون تغيير موضعه أو قيمة Kc."},
+  {q:"في برونستد-لوري، الحمض هو:",o:["مادة تنتج OH⁻","مادة مانحة للبروتون H⁺","مادة مستقبلة للبروتون H⁺","مادة تنتج H⁺ فقط في الماء"],a:1,f:"في نظرية برونستد-لوري: الحمض=مانح H⁺ | القاعدة=مستقبل H⁺."},
+  {q:"ما pH لمحلول HCl تركيزه 0.01M؟",o:["1","2","12","13"],a:1,f:"HCl قوي → [H⁺]=0.01M → pH=−log(0.01)=2"},
+  {q:"ما pOH لمحلول NaOH تركيزه 0.006M؟",o:["11.78","2.22","7","8"],a:1,f:"[OH⁻]=0.006M → pOH=−log(0.006)≈2.22"},
+  {q:"ما تعبير Kc للتفاعل: CaCO₃(s)⇌CaO(s)+CO₂(g)؟",o:["Kc=[CO₂][CaO]/[CaCO₃]","Kc=[CO₂]","Kc=[CaO][CO₂]","Kc=1/[CO₂]"],a:1,f:"المواد الصلبة لا تدخل في تعبير Kc → Kc=[CO₂]"},
+  {q:"إذا كان Ka=1.8×10⁻⁵ و[CH₃COOH]=0.15M، ما [H⁺]؟",o:["1.64×10⁻³M","1.8×10⁻⁵M","2.7×10⁻⁶M","1.64×10⁻⁶M"],a:0,f:"[H⁺]=√(Ka×[HA])=√(1.8×10⁻⁵×0.15)=√(2.7×10⁻⁶)=1.64×10⁻³M"},
+  {q:"ما تعريف المواد الأمفوتيرية (المترددة)؟",o:["مواد حمضية قوية","مواد تسلك سلوك الحمض أو القاعدة حسب ما تتفاعل معه","مواد صلبة لا تذوب","أيونات سالبة فقط"],a:1,f:"المادة الأمفوتيرية تسلك سلوك الحمض في تفاعل وسلوك القاعدة في تفاعل آخر. مثال: الماء، HCO₃⁻"},
+  {q:"Kw=[H⁺][OH⁻] عند 25°C يساوي:",o:["10⁻⁷","10⁻¹⁴","10⁻⁷×2","1"],a:1,f:"Kw=1×10⁻¹⁴ عند 25°C | في الماء النقي [H⁺]=[OH⁻]=10⁻⁷M"},
+  {q:"ما تعريف المحلول المنظم Buffer؟",o:["محلول يغير pH بسرعة","محلول يقاوم التغير المفاجئ في pH","محلول حمضي قوي","محلول يحتوي حمضاً قوياً وملحاً"],a:1,f:"Buffer: محلول من حمض ضعيف + ملح قاعدته المرافقة، يقاوم تغير pH."},
+  {q:"ما معادلة هندرسون-هاسلبالش للمحلول المنظم الحمضي؟",o:["pH=pKb+log([HA]/[A⁻])","pH=pKa+log([A⁻]/[HA])","pH=pKa−log([A⁻]/[HA])","pH=Ka+log([A⁻]/[HA])"],a:1,f:"pH=pKa+log([قاعدة مرافقة]/[حمض ضعيف])=pKa+log([A⁻]/[HA])"},
+  {q:"إذا كان pH=5.76 لمحلول، هل هو حمضي أم قاعدي؟",o:["قاعدي لأن pH>5","حمضي لأن pH<7","متعادل","لا يمكن التحديد"],a:1,f:"pH<7 → محلول حمضي | pH>7 → قاعدي | pH=7 → متعادل عند 25°C."},
+  {q:"في تفاعل NH₄NO₃(s)→NH₄NO₃(aq)، ΔH=+25.7 kJ/mol\nلماذا الكمادات الباردة تحتوي على نترات الأمونيوم؟",o:["لأنه يطلق حرارة","لأنه يمتص حرارة من المحيط عند الذوبان","لأنه متجمد","لأنه غير ذائب"],a:1,f:"ΔH=+ يعني تفاعل ماص — يمتص الحرارة من الجلد عند الذوبان."},
+  {q:"ما الفرق بين الحمض القوي والضعيف في التأين؟",o:["القوي يتأين جزئياً والضعيف كاملاً","القوي يتأين 100% والضعيف أقل من 100%","كلاهما يتأين 100%","لا فرق بينهما"],a:1,f:"حمض قوي: تأين 100% كامل (مثل HCl). حمض ضعيف: تأين جزئي أقل من 100% (مثل CH₃COOH)."},
+  {q:"ما القاعدة المرافقة لحمض HNO₂؟",o:["H₂NO₂⁺","NO₂⁻","HNO₃","OH⁻"],a:1,f:"القاعدة المرافقة = الحمض − H⁺ → HNO₂ − H⁺ = NO₂⁻"}
+],
+'6':[
+  {q:"ما قانون حساب كمية الحرارة المنقولة؟",o:["Q=mΔT","Q=mcΔT","Q=c/mΔT","Q=mc/ΔT"],a:1,f:"Q = m × c × ΔT — m الكتلة، c الحرارة النوعية، ΔT التغير في درجة الحرارة."},
+  {q:"ما الحرارة النوعية للماء؟",o:["1 J/g·°C","2.09 J/g·°C","4.184 J/g·°C","0.473 J/g·°C"],a:2,f:"c للماء = 4.184 J/g·°C — قيمة مهمة جداً في الحسابات."},
+  {q:"في المسعر الحراري: Q_reaction + Q_water = ؟",o:["Q_water","1","-1","صفر"],a:3,f:"الطاقة الكلية للنظام المعزول = صفر دائماً."},
+  {q:"فولاذ كتلته 100g اكتسب 93100J، وc=470 J/kg·°C، ما ΔT؟",o:["980°C","1980.85°C","198°C","19808°C"],a:1,f:"m=0.1kg | ΔT=Q/(mc)=93100/(0.1×470)=1980.85°C"},
+  {q:"ما شروط حرارة الاحتراق القياسية ΔH°c؟",o:["احتراق 2mol","احتراق 1mol كاملاً بـO₂ وΔH<0","احتراق بـH₂","ΔH>0"],a:1,f:"شروط ΔH°c: 1mol، احتراق تام بـO₂، ينتج CO₂، وΔH<0 دائماً."},
+  {q:"ما ΔH°f للأكسجين O₂ في حالته الغازية؟",o:["−393.5 kJ/mol","−285.8 kJ/mol","صفر","+205 kJ/mol"],a:2,f:"ΔH°f=0 للعناصر في حالتها القياسية: O₂, H₂, N₂, C(s), S(s)..."},
+  {q:"ينص قانون هس على أن:",o:["ΔH يعتمد على مسار التفاعل","ΔH الكلي ثابت بغض النظر عن عدد الخطوات","ΔH يتغير مع الضغط","ΔH=صفر دائماً"],a:1,f:"قانون هس: ΔH الكلي ثابت بغض النظر عن الخطوات أو المسار."},
+  {q:"عند عكس معادلة كيميائية، ماذا يحدث لـ ΔH؟",o:["يتضاعف","يتنصف","تُقلب إشارته","لا يتغير"],a:2,f:"عكس المعادلة = قلب إشارة ΔH: الطارد يصبح ماصاً والعكس."},
+  {q:"ΔH°r = ؟",o:["Σ(n×ΔH°f متفاعلات)−Σ(m×ΔH°f نواتج)","Σ(n×ΔH°f نواتج)−Σ(m×ΔH°f متفاعلات)","Σ(ΔH°f نواتج)+Σ(ΔH°f متفاعلات)","Σ(ΔH°f نواتج)÷Σ(ΔH°f متفاعلات)"],a:1,f:"ΔH°r = Σ(n×ΔH°f نواتج) − Σ(m×ΔH°f متفاعلات)"},
+  {q:"في تفاعل ماص للحرارة عند الانصهار (صلب→سائل):",o:["ΔH=−","ΔH=+","ΔH=0","ΔH يعتمد على المادة"],a:1,f:"الانصهار يمتص حرارة → تفاعل ماص → ΔH=+"},
+  {q:"ما معنى ΔH = −ve في التفاعل؟",o:["التفاعل ماص للحرارة","التفاعل طارد للحرارة","طاقة التنشيط صغيرة","التفاعل لا يحدث"],a:1,f:"ΔH=− → تفاعل طارد: يُطلق حرارة للوسط → درجة حرارة الوسط ترتفع."},
+  {q:"لماذا تحتوي الكمادات الساخنة على أسيتات الصوديوم؟",o:["لأنه يمتص الحرارة","لأنه يطلق حرارة عند تبلوره (ΔH=−)","لأنه غاز","لأن درجة غليانه منخفضة"],a:1,f:"CH₃COONa عند التبلور يطلق حرارة للمحيط (تفاعل طارد) → يُسخّن."},
+  {q:"ما الفرق بين ΔH°f وΔH°c؟",o:["لا فرق","ΔH°f: تكوين من عناصر | ΔH°c: احتراق كامل دائماً سالب","ΔH°f: احتراق | ΔH°c: تكوين","كلاهما دائماً سالب"],a:1,f:"ΔH°f: تكوين 1mol من عناصر أولية (+ أو −). ΔH°c: احتراق كامل بـO₂ (دائماً −)."},
+  {q:"ما معادلة تكوين الميثانول CH₃OH(l) القياسية؟",o:["C+H₂+O₂→CH₃OH","C(s)+2H₂(g)+½O₂(g)→CH₃OH(l)","CO+2H₂→CH₃OH","CH₄+O₂→CH₃OH+H₂O"],a:1,f:"معادلة التكوين: عناصر أولية في حالتها القياسية → 1mol من المادة."},
+  {q:"لحساب ΔH°r باستخدام جدول ΔH°f، ما قيمة N₂(g)؟",o:["−46 kJ/mol","−393.5 kJ/mol","صفر","+180.5 kJ/mol"],a:2,f:"N₂ عنصر في حالته القياسية → ΔH°f=0"},
+  {q:"في احتراق الإيثان: 2C₂H₆+7O₂→4CO₂+6H₂O\nإذا كان ΔH°r=−2857.2 kJ، فما ΔH°c للإيثان؟",o:["−2857.2 kJ/mol","−1428.6 kJ/mol","−571.4 kJ/mol","−5714.4 kJ/mol"],a:1,f:"ΔH°c = ΔH°r ÷ عدد مولات الإيثان = −2857.2÷2 = −1428.6 kJ/mol"},
+  {q:"في دورة هس: ΔHc = ΔH₂ − ΔH₁ ، ما المعنى؟",o:["ΔH التفاعل المباشر","ΔH النواتج − ΔH المتفاعلات","ΔH المتفاعلات − ΔH النواتج","مجموع الـ ΔH"],a:1,f:"في دورة هس: ΔHc = ΔH(نواتج إلى عناصر) − ΔH(متفاعلات إلى عناصر)"},
+  {q:"قطعة ذهب كتلتها 500g اكتسبت 1800J وارتفعت حرارتها من 25°C إلى 55°C. ما c للذهب؟",o:["0.12 J/g·°C","12 J/g·°C","0.012 J/g·°C","1.2 J/g·°C"],a:0,f:"c=Q/(mΔT)=1800/(500×30)=1800/15000=0.12 J/g·°C"},
+  {q:"تم وضع قطعة حديد ساخنة 500g عند 90°C في 400g ماء عند 10°C. ما قانون حساب درجة الحرارة النهائية؟",o:["Q_Fe=Q_water","Q_Fe+Q_water=0 أي m₁c₁ΔT₁=−m₂c₂ΔT₂","Q_Fe=2Q_water","لا يوجد قانون"],a:1,f:"في المسعر: Q_Fe+Q_water=0 → m_Fe×c_Fe×(T_final−90)=−m_water×c_water×(T_final−10)"},
+  {q:"أي التفاعلات التالية تُعدّ حرارة احتراق قياسية؟",o:["2C(s)+O₂→2CO(g)، ΔH=−221kJ","C(s)+O₂(g)→CO₂(g)، ΔH=−393.5kJ","6FeO(s)+O₂→2Fe₃O₄(s)","CO(g)+½O₂→CO₂(g)، ΔH=+283kJ"],a:1,f:"الشروط: احتراق 1mol كاملاً → CO₂. C(s)+O₂→CO₂ تحقق جميع الشروط وΔH<0."}
+],
+'7':[
+  {q:"ما تعريف الانتروبي S؟",o:["مقياس الطاقة الحرارية","مقياس درجة العشوائية","مقياس سرعة التفاعل","مقياس الضغط"],a:1,f:"الانتروبي S = مقياس درجة العشوائية (الفوضى) في النظام."},
+  {q:"أي العمليات تزيد الانتروبي (ΔS=+)؟",o:["التجمد","الترسيب","التكثف","التبخر"],a:3,f:"التبخر (سائل→غاز) يزيد العشوائية بشكل كبير → ΔS=+"},
+  {q:"في التفاعل: CaCO₃(s)→CaO(s)+CO₂(g)، ما إشارة ΔS؟",o:["ΔS=−","ΔS=+","ΔS=0","لا يمكن التحديد"],a:1,f:"صلب → صلب+غاز: مولات الغاز تزداد في النواتج → ΔS=+"},
+  {q:"في التفاعل: 4Fe(s)+3O₂(g)→2Fe₂O₃(s)، ما إشارة ΔS؟",o:["ΔS=+","ΔS=−","ΔS=0","تعتمد على T"],a:1,f:"غاز (3mol) → صلب: مولات الغاز تقل → ΔS=−"},
+  {q:"ما القانون الثالث للديناميكا الحرارية؟",o:["الطاقة تتحول","عند 0K انتروبي أي نظام مثالي=صفر","ΔG=ΔH−TΔS","ΔS=Σ(S°نواتج)−Σ(S°متفاعلات)"],a:1,f:"القانون الثالث: عند الصفر المطلق (0K) → انتروبي النظام المثالي=0"},
+  {q:"ΔS° = ؟",o:["Σ(n×S°متفاعلات)−Σ(m×S°نواتج)","Σ(n×S°نواتج)−Σ(m×S°متفاعلات)","Σ(S°نواتج)+Σ(S°متفاعلات)","Σ(S°نواتج)÷Σ(S°متفاعلات)"],a:1,f:"ΔS°=Σ(n×S°نواتج)−Σ(m×S°متفاعلات)"},
+  {q:"ما وحدة قياس الانتروبي المطلق القياسي S°؟",o:["kJ/mol","J/mol·K","kJ/mol·K","J/g·K"],a:1,f:"وحدة S° = J/mol·K"},
+  {q:"هل S° للعناصر النقية يساوي صفراً؟",o:["نعم دائماً","لا، S° للعناصر موجبة وليست صفراً","نعم إذا كانت عند 25°C","يعتمد على العنصر"],a:1,f:"S° للعناصر ≠ صفر (بخلاف ΔH°f). مثال: Fe(s)=27.15 J/mol·K"},
+  {q:"ما معادلة طاقة جبس الحرة؟",o:["ΔG=ΔH+TΔS","ΔG=ΔH−TΔS","ΔG=ΔS−TΔH","ΔG=T(ΔH−ΔS)"],a:1,f:"ΔG°=ΔH°−T×ΔS° — T لازم يكون بالكلفن دائماً."},
+  {q:"إذا كان ΔG<0، ماذا يعني؟",o:["غير تلقائي","النظام في اتزان","تلقائي","لا يمكن التحديد"],a:2,f:"ΔG<0 → تلقائي. ΔG>0 → غير تلقائي. ΔG=0 → اتزان."},
+  {q:"إذا كان ΔH=− وΔS=+، متى التفاعل تلقائي؟",o:["T العالية فقط","T المنخفضة فقط","تلقائي عند كل درجات الحرارة","غير تلقائي أبداً"],a:2,f:"ΔH=− وΔS=+ → ΔG=−−(+)(+)=سالب دائماً → تلقائي عند كل T."},
+  {q:"إذا كان ΔH=+ وΔS=−، متى التفاعل تلقائي؟",o:["T العالية فقط","T المنخفضة فقط","تلقائي عند كل درجات الحرارة","غير تلقائي أبداً"],a:3,f:"ΔH=+ وΔS=− → ΔG=+−(+)(−)=موجب دائماً → غير تلقائي أبداً."},
+  {q:"إذا كان ΔH=+ وΔS=+، متى يكون التفاعل تلقائياً؟",o:["T العالية فقط","T المنخفضة فقط","تلقائي دائماً","غير تلقائي دائماً"],a:0,f:"ΔH=+ وΔS=+ → ΔG=+−T(+)، عند T كبيرة يصبح TΔS>ΔH → ΔG<0 → تلقائي."},
+  {q:"كيف تحسب T عند الاتزان (ΔG=0)؟",o:["T=ΔS/ΔH","T=ΔH/ΔS","T=ΔG/ΔS","T=ΔH×ΔS"],a:1,f:"عند ΔG=0: 0=ΔH−TΔS → TΔS=ΔH → T=ΔH/ΔS"},
+  {q:"ما تأثير ارتفاع درجة الحرارة على الانتروبي؟",o:["يقل الانتروبي","يزداد الانتروبي","لا يتغير","يصبح سالباً"],a:1,f:"ارتفاع T → تزداد الطاقة الحركية → تزداد سرعة الجسيمات → تزداد العشوائية → S يزداد."},
+  {q:"ما ΔG° عند 298K إذا كان ΔH°=−92.38 kJ/mol وΔS°=−198.4 J/mol·K؟",o:["−151.5 kJ/mol","−33.3 kJ/mol","+33.3 kJ/mol","+151.5 kJ/mol"],a:1,f:"ΔG=−92.38−(298×−0.1984)=−92.38+59.12=−33.26≈−33.3 kJ/mol"},
+  {q:"ما وحدة طاقة جبس الحرة ΔG؟",o:["J/mol·K","kJ","J/mol أو kJ/mol","Pa"],a:2,f:"وحدة ΔG = J/mol أو kJ/mol (مثل ΔH)."},
+  {q:"في التفاعل: H₂O(l)⇌H₂O(g) عند 100°C يكون ΔG=0. إذا كان ΔH=+40.67 kJ/mol، ما ΔS؟",o:["−0.109 kJ/mol·K","+0.109 kJ/mol·K","+40.67 J/mol·K","−40.67 J/mol·K"],a:1,f:"T=373K | ΔS=ΔH/T=40.67/373=+0.109 kJ/mol·K=+109 J/mol·K"},
+  {q:"ما الفرق بين التلقائية والسرعة في التفاعلات الكيميائية؟",o:["كلاهما نفس المعنى","التلقائية = حدوث التفاعل تلقائياً، السرعة = مدى سرعة حدوثه — تفاعل تلقائي قد يكون بطيئاً جداً","السرعة تحدد التلقائية","التلقائي دائماً سريع"],a:1,f:"التلقائية لا تعني السرعة. مثال: صدأ الحديد تلقائي لكن بطيء جداً."},
+  {q:"ما العوامل الثلاثة التي تحدد تلقائية التفاعل؟",o:["الضغط والحجم والحرارة","المحتوى الحراري ΔH والانتروبي ΔS ودرجة الحرارة T","التركيز والضغط والحفاز","سرعة التفاعل والاتزان والحرارة"],a:1,f:"تحدد التلقائية: ① المحتوى الحراري ΔH ② الانتروبي ΔS ③ درجة الحرارة المطلقة T."}
+]
+};
+
+/* ═══ ALL ESSAY DATA ═══ */
+const E={
+'4':[
+  {t:'حساب',q:'في التفاعل: 3A+2B→2C+D\nاكتب 4 تعبيرات مختلفة لحساب سرعة التفاعل.',
+   s:['r=−(1/3)Δ[A]/Δt','r=−(1/2)Δ[B]/Δt','r=+(1/2)Δ[C]/Δt','r=+(1/1)Δ[D]/Δt'],a:'4 تعبيرات صحيحة بنسب معاملات المعادلة'},
+  {t:'حساب',q:'في التفاعل: N₂+3H₂→2NH₃\nإذا كانت سرعة إنتاج NH₃=0.3 M/s، احسب سرعة استهلاك H₂ وN₂.',
+   s:['r(H₂)/r(NH₃)=3/2 → r(H₂)=0.3×(3/2)=0.45 M/s','r(N₂)/r(NH₃)=1/2 → r(N₂)=0.3×(1/2)=0.15 M/s'],a:'r(H₂)=0.45 M/s | r(N₂)=0.15 M/s'},
+  {t:'تفسير',q:'فسّر لماذا تتفاعل برادة الحديد مع HCl أسرع من قطعة الحديد بنفس الكتلة.',
+   s:['تقسيم الحديد → مساحة سطح معرضة للتفاعل أكبر بكثير','مساحة أكبر → عدد جسيمات Fe المتاحة للتصادم أكثر','تصادمات فعالة أكثر في وحدة الزمن','∴ سرعة التفاعل أكبر'],a:'السبب: زيادة مساحة السطح → تصادمات فعالة أكثر'},
+  {t:'حساب',q:'من جدول البيانات (A+B→C):\nم1: [A]=0.1, [B]=0.1, r=2×10⁻⁵\nم2: [A]=0.2, [B]=0.1, r=4×10⁻⁵\nم3: [A]=0.1, [B]=0.2, r=2×10⁻⁵\nاشتق قانون السرعة واحسب k.',
+   s:['رتبة A: r₂/r₁=2=(0.2/0.1)ⁿ → n=1','رتبة B: r₃/r₁=1=(0.2/0.1)ᵐ → m=0','قانون السرعة: r=k[A]','k=r/[A]=2×10⁻⁵/0.1=2×10⁻⁴ s⁻¹'],a:'r=k[A] | k=2×10⁻⁴ s⁻¹'},
+  {t:'تفسير',q:'اشرح تأثير العامل الحفاز على سرعة التفاعل وعلى موضع الاتزان وقيمة Keq.',
+   s:['يقلل طاقة التنشيط للطردي والعكسي بنفس المقدار','يزيد سرعة التفاعلين الطردي والعكسي معاً','لا يؤثر على موضع الاتزان','لا يؤثر على قيمة Kc أو Keq','يختصر فقط الوقت اللازم للوصول للاتزان'],a:'الحفاز يسرع الوصول للاتزان دون تغيير موضعه أو قيمة Keq'},
+  {t:'حساب',q:'قيمة k=0.0451 s⁻¹ لتفاعل رتبة أولى.\nأ) احسب t½\nب) الزمن ليبقى 25%\nج) الزمن ليبقى 12.5%',
+   s:['t½=ln2/k=0.693/0.0451=15.37 s','100%→50%→25%=فترتان: T=15.37×2=30.74 s','100%→50%→25%→12.5%=3 فترات: T=15.37×3=46.11 s'],a:'t½=15.37s | 25%: 30.74s | 12.5%: 46.11s'},
+  {t:'حساب',q:'إذا كان عمر النصف لعنصر مشع 6 ساعات، ما المدة اللازمة حتى يتحلل 97%؟',
+   s:['100→50→25→12.5→6.25→3.125% = 5 فترات','T=t½×n=6×5=30 ساعة','بعد 30 ساعة يتبقى 3.125% ≈ 3% أي تحلل ≈97%'],a:'T=30 ساعة'},
+  {t:'حساب',q:'من التجربة: تناقص [NO₃⁻] من 0.4M إلى 0.2M خلال 90s.\nما الزمن للتناقص من 0.8M إلى 0.1M؟',
+   s:['0.4→0.2M=فترة واحدة=90s → t½=90s','0.8→0.4→0.2→0.1M=3 فترات','T=t½×n=90×3=270s'],a:'T=270 ثانية'},
+  {t:'تفسير',q:'اشرح العوامل الستة المؤثرة في سرعة التفاعل مع ذكر تأثير كل منها من حيث نظرية التصادم.',
+   s:['① طبيعة المواد: عدد الروابط أكثر→أبطأ، نشاط أعلى→أسرع','② التركيز (سوائل): يزداد→تصادمات أكثر→أسرع','③ الضغط (غازات): يزداد→جزيئات أقرب→تصادمات أكثر','④ السطح (صلبة): أكبر→جسيمات أكثر متاحة للتصادم','⑤ درجة الحرارة: أعلى→طاقة حركية أكبر→تصادمات فعالة أكثر','⑥ الحفاز: يقلل طاقة التنشيط→جسيمات أكثر قادرة على التفاعل'],a:'6 عوامل تؤثر جميعها على عدد التصادمات الفعالة'},
+  {t:'حساب',q:'يتفكك ثنائي ميثيل إيثر وفق رتبة أولى:\nCH₃OCH₃→CH₄+H₂+CO\n[CH₃OCH₃]=0.0500M، r=3.40×10⁻⁵ M/s\nاحسب k ثم t½.',
+   s:['r=k[CH₃OCH₃] → k=r/[A]=3.40×10⁻⁵/0.0500=6.80×10⁻⁴ s⁻¹','t½=ln2/k=0.693/(6.80×10⁻⁴)=1019 s≈17 دقيقة'],a:'k=6.80×10⁻⁴ s⁻¹ | t½≈1019 s'}
+],
+'5':[
+  {t:'حساب',q:'اكتب تعبير Kc وKp للتفاعل:\n2SO₃(g)⇌2SO₂(g)+O₂(g)',
+   s:['Kc=[SO₂]²[O₂]/[SO₃]²  (وحدة: M)','Kp=P²SO₂×PO₂/P²SO₃  (وحدة: atm)','الصلبة والسوائل النقية لا تُكتب في تعبير K'],a:'Kc=[SO₂]²[O₂]/[SO₃]² | Kp=P²SO₂×PO₂/P²SO₃'},
+  {t:'حساب',q:'N₂+3H₂⇌2NH₃\n[H₂]=0.25M, [N₂]=0.32M, [NH₃]=0.45M\nاحسب قيمة Kc.',
+   s:['Kc=[NH₃]²/([N₂][H₂]³)','=(0.45)²/((0.32)(0.25)³)','=0.2025/(0.32×0.015625)','=0.2025/0.005=40.5 M⁻²'],a:'Kc=40.5 M⁻²'},
+  {t:'تفسير',q:'في التفاعل الطارد: A+B⇌C+D+طاقة\nاشرح أثر: أ) رفع T على موضع الاتزان وKc\nب) زيادة تركيز A على موضع الاتزان وKc',
+   s:['أ) رفع T: يزاح للیسار (نحو الماص) → تراكيز متفاعلات تزداد → Kc=[نواتج]/[متفاعلات] يقل','ب) زيادة [A]: يزاح للیمین (يبتعد عنها) → تراكيز نواتج تزداد → Kc لا يتغير (T ثابتة)'],a:'رفع T: موضع اليسار + Kc يقل | زيادة [A]: موضع اليمين + Kc لا يتغير'},
+  {t:'حساب',q:'احسب pH لكل من:\nأ) HCl تركيزه 0.01M\nب) NaOH تركيزه 0.006M',
+   s:['أ) HCl قوي→[H⁺]=0.01M→pH=−log(0.01)=2','ب) NaOH قوي→[OH⁻]=0.006M→pOH=−log(0.006)=2.22','pH=14−2.22=11.78'],a:'pH(HCl)=2 | pH(NaOH)=11.78'},
+  {t:'حساب',q:'احسب pH لمحلول حمض الأسيتيك CH₃COOH تركيزه 0.15M\nعلماً: Ka=1.8×10⁻⁵',
+   s:['[H⁺]=√(Ka×[HA])=√(1.8×10⁻⁵×0.15)','=√(2.7×10⁻⁶)=1.643×10⁻³M','pH=−log(1.643×10⁻³)=2.784'],a:'pH≈2.78'},
+  {t:'تفسير',q:'ما الفرق بين التفاعل الانعكاسي وغير الانعكاسي وما علاقة ذلك بالاتزان؟',
+   s:['انعكاسي: يسير في اتجاهين (←و→) في نظام مغلق → يصل للاتزان','غير انعكاسي: يسير في اتجاه واحد في نظام مفتوح → لا يصل للاتزان','الاتزان خاص بالانعكاسي فقط','عند الاتزان: المتفاعلات والنواتج موجودة معاً وتراكيزها ثابتة'],a:'الاتزان خاص بالتفاعلات الانعكاسية في الأنظمة المغلقة'},
+  {t:'تفسير',q:'اشرح مبدأ لوشاتيليه وكيف يؤثر تغيير الضغط على التفاعل:\n2SO₂(g)+O₂(g)⇌2SO₃(g)',
+   s:['مبدأ لوشاتيليه: النظام يزاح لتقليل أثر أي مؤثر خارجي','زيادة الضغط (تقليل الحجم): يزاح نحو الجهة الأقل مولات غازية','متفاعلات: 2+1=3 mol غاز | نواتج: 2 mol غاز','∴ زيادة الضغط → يزاح للیمین (نحو SO₃)'],a:'زيادة الضغط → يزاح للیمین حيث مولات الغاز أقل (2<3)'},
+  {t:'حساب',q:'وضح كيف تحسب Kc للتفاعل التالي باستخدام جدول ICE:\nN₂(g)+O₂(g)⇌2NO(g)\nإذا بدأ بـ [N₂]=0.2M و[O₂]=0.5M وعند الاتزان [NO]=0.1M',
+   s:['I: N₂=0.2, O₂=0.5, NO=0','C: N₂=−x, O₂=−x, NO=+2x','E: 0.1=2x → x=0.05','[N₂]=0.2−0.05=0.15M | [O₂]=0.5−0.05=0.45M','Kc=[NO]²/([N₂][O₂])=(0.1)²/(0.15×0.45)=0.01/0.0675=0.148'],a:'Kc≈0.148'},
+  {t:'تفسير',q:'ما المواد الأمفوتيرية؟ أعطِ مثالاً على الماء ووضّح سلوكه.',
+   s:['المادة الأمفوتيرية: تسلك سلوك الحمض في تفاعل وسلوك القاعدة في آخر','الماء مع حمض: H₂O+HCl→H₃O⁺+Cl⁻ (الماء قاعدة استقبلت H⁺)','الماء مع قاعدة: H₂O+NH₃→NH₄⁺+OH⁻ (الماء حمض أعطى H⁺)','أمثلة أخرى: HCO₃⁻، HS⁻، H₂PO₄⁻'],a:'الماء أمفوتيري: قاعدة مع الأحماض وحمض مع القواعد'},
+  {t:'حساب',q:'محلول أسيتات الصوديوم CH₃COONa pH=9.2\nعلماً: Kb=5.56×10⁻¹⁰، معادلة الاتزان: CH₃COO⁻+H₂O⇌CH₃COOH+OH⁻\nاحسب التركيز الابتدائي لأسيتات الصوديوم.',
+   s:['pOH=14−9.2=4.8','[OH⁻]=10⁻⁴·⁸=1.585×10⁻⁵ M','Kb=[OH⁻]²/[قاعدة] → [قاعدة]=[OH⁻]²/Kb','=(1.585×10⁻⁵)²/(5.56×10⁻¹⁰)=(2.51×10⁻¹⁰)/(5.56×10⁻¹⁰)','[CH₃COO⁻]=0.452 M ≈ 0.45 M'],a:'[CH₃COONa]≈0.45 M'}
+],
+'6':[
+  {t:'حساب',q:'فولاذ 100g اكتسب 93100J وc=470 J/kg·°C\nاحسب مقدار التغير في درجة الحرارة.',
+   s:['m=100g=0.1 kg','Q=mcΔT → ΔT=Q/(mc)','ΔT=93100/(0.1×470)=93100/47','ΔT=1980.85°C'],a:'ΔT≈1980.85°C'},
+  {t:'حساب',q:'إضافة 3.6 kJ للإيثانول 180g ترفع حرارته من 18.5°C إلى 28.5°C.\nاحسب الحرارة النوعية للإيثانول.',
+   s:['Q=3.6 kJ=3600 J | m=180 g | ΔT=28.5−18.5=10°C','c=Q/(mΔT)=3600/(180×10)=3600/1800','c=2 J/g·°C أو 2000 J/kg·°C=2 kJ/kg·°C'],a:'c=2 J/g·°C'},
+  {t:'حساب',q:'وضع قطعة حديد ساخنة 500g عند 90°C في 400g ماء عند 10°C.\nc(حديد)=0.473 J/g·°C | c(ماء)=4.184 J/g·°C\nاحسب درجة الحرارة الابتدائية للحديد لو كانت درجة الحرارة النهائية 90°C لـ الماء.',
+   s:['Q_water=−Q_Fe','m_water×c_water×ΔT_water=−m_Fe×c_Fe×ΔT_Fe','400×4.184×(90−10)=−500×0.473×(90−Ti)','133888=−236.5×(90−Ti)','133888=−21285+236.5Ti','Ti=(133888+21285)/236.5=155173/236.5=656°C'],a:'Ti=656°C'},
+  {t:'حساب',q:'احسب ΔH°r لاحتراق الإيثان: 2C₂H₆+7O₂→4CO₂+6H₂O\nΔH°f(C₂H₆)=−83.8 | ΔH°f(CO₂)=−393.5 | ΔH°f(H₂O)=−241.8 kJ/mol',
+   s:['ΔH°r=Σ(n×ΔH°f نواتج)−Σ(m×ΔH°f متفاعلات)','نواتج: [4×(−393.5)+6×(−241.8)]=[−1574+(−1450.8)]=−3024.8 kJ','متفاعلات: [2×(−83.8)+7×0]=−167.6 kJ','ΔH°r=−3024.8−(−167.6)=−2857.2 kJ'],a:'ΔH°r=−2857.2 kJ'},
+  {t:'تفسير',q:'فسّر لماذا تحتوي الكمادات الباردة على NH₄NO₃ والساخنة على CH₃COONa.',
+   s:['NH₄NO₃(s)+H₂O→NH₄NO₃(aq) ΔH=+25.7 kJ/mol (ماص)','عند الذوبان يمتص الحرارة من المحيط → المحيط يبرد','CH₃COONa(aq)→CH₃COONa(s) عند التبلور ΔH=−18 kJ/mol (طارد)','عند التبلور يطلق الحرارة للمحيط → المحيط يسخن'],a:'NH₄NO₃ ماص→كمادة باردة | CH₃COONa طارد→كمادة ساخنة'},
+  {t:'حساب',q:'باستخدام قانون هس، احسب ΔH للتفاعل:\nH₂O(g)+C(s)→H₂(g)+CO(g)\nمعطى:\n① H₂+½O₂→H₂O ΔH=−242 kJ\n② 2CO→2C+O₂ ΔH=+221 kJ',
+   s:['① اعكس: H₂O→H₂+½O₂ ΔH=+242 kJ','② اقسم على 2: C+½O₂→CO ΔH=−221/2=−110.5 kJ','اجمع: H₂O+C→H₂+CO','ΔH=(+242)+(−110.5)=+131.5 kJ'],a:'ΔH=+131.5 kJ'},
+  {t:'تفسير',q:'ما الفرق بين ΔH°f وΔH°c؟ ووضح شروط كل منهما.',
+   s:['ΔH°f: التغير في المحتوى الحراري لتكوين 1mol من عناصرها الأولية (+ أو −)','شروطه: 1mol ناتج واحد، عناصر في حالتها القياسية','ΔH°c: الحرارة المنطلقة عند احتراق 1mol كاملاً بـO₂ (دائماً سالبة)','شروطه: احتراق تام، ينتج CO₂ وH₂O، ΔH<0 دائماً'],a:'ΔH°f: تكوين من عناصر (+ أو −) | ΔH°c: احتراق كامل (دائماً −)'},
+  {t:'حساب',q:'احسب ΔH°r لاحتراق الجلوكوز 100g:\nC₆H₁₂O₆+6O₂→6H₂O+6CO₂\nΔH°f(C₆H₁₂O₆)=−1271 | ΔH°f(CO₂)=−393.5 | ΔH°f(H₂O)=−285.5 kJ/mol',
+   s:['ΔH°r=[(6×−285.5)+(6×−393.5)]−[(1×−1271)+(6×0)]','=[−1713+(−2361)]−[−1271]','=−4074−(−1271)=−2803 kJ/mol','n(C₆H₁₂O₆)=100/180=0.556 mol','ΔH=0.556×(−2803)=−1558.5 kJ'],a:'ΔH°r=−2803 kJ/mol | لـ100g: ΔH≈−1558.5 kJ'},
+  {t:'تفسير',q:'ما قانون هس؟ وما الخطوات التي تتبعينها عند تطبيقه على معادلة وسيطة؟',
+   s:['قانون هس: ΔH الكلي ثابت بغض النظر عن عدد الخطوات أو مسار التفاعل','خطوة 1: اكتبي المعادلة المطلوبة النهائية','خطوة 2: رتبي المعادلات الوسيطة (عكس/ضرب/قسمة) لتُنتج المطلوبة','خطوة 3: عكس المعادلة = قلب إشارة ΔH | ضرب في n = ΔH×n','خطوة 4: اجمعي قيم ΔH المعدلة','خطوة 5: تحققي من إلغاء المواد الصحيحة'],a:'قانون هس يُطبق بعكس/ضرب/قسمة المعادلات ثم جمع ΔH'},
+  {t:'حساب',q:'احسب الحرارة النوعية لمعدن كتلته 500g اكتسب 1800J وارتفعت حرارته من 25°C إلى 55°C.',
+   s:['Q=mcΔT → c=Q/(mΔT)','ΔT=55−25=30°C | m=500g | Q=1800J','c=1800/(500×30)=1800/15000','c=0.12 J/g·°C=120 J/kg·°C'],a:'c=0.12 J/g·°C'}
+],
+'7':[
+  {t:'تفسير',q:'وضّح إشارة ΔS للتفاعلات التالية مع التفسير:\n1) CaCO₃(s)→CaO(s)+CO₂(g)\n2) 4Fe(s)+3O₂(g)→2Fe₂O₃(s)',
+   s:['1) صلب→صلب+غاز: مولات الغاز في النواتج>المتفاعلات → ΔS=+','تفسير: الغاز أكثر عشوائية من الصلب','2) صلب+غاز(3mol)→صلب: مولات الغاز تقل من 3 إلى 0 → ΔS=−','تفسير: يتحول الغاز المتحرك إلى صلب منتظم'],a:'1) ΔS=+ | 2) ΔS=−'},
+  {t:'حساب',q:'احسب ΔS° للتفاعل:\n4Fe(s)+3O₂(g)→2Fe₂O₃(s)\nS°: Fe=27.15, O₂=205, Fe₂O₃=89.96 J/mol·K',
+   s:['ΔS°=Σ(n×S°نواتج)−Σ(m×S°متفاعلات)','نواتج: 2×89.96=179.92','متفاعلات: (4×27.15)+(3×205)=108.6+615=723.6','ΔS°=179.92−723.6=−543.7 J/mol·K'],a:'ΔS°=−543.7 J/mol·K (نقصان)'},
+  {t:'حساب',q:'احسب ΔG° عند 298K للتفاعل: N₂+3H₂⇌2NH₃\nΔH°=−92.38 kJ/mol | ΔS°=−198.4 J/mol·K\nهل التفاعل تلقائي عند 298K؟',
+   s:['T=298K | ΔS°=−198.4/1000=−0.1984 kJ/mol·K (لتوحيد الوحدات)','ΔG°=ΔH°−TΔS°=(−92.38)−(298)(−0.1984)','=(−92.38)−(−59.12)=−92.38+59.12','ΔG°=−33.26 kJ/mol → سالبة → تلقائي'],a:'ΔG°=−33.26 kJ/mol → تلقائي عند 298K'},
+  {t:'حساب',q:'احسب T التي يصل عندها تفاعل C₆H₆(l)⇌C₆H₆(s) للاتزان:\nΔH°=−9.83 kJ/mol | ΔS°=−35.2 J/mol·K',
+   s:['عند الاتزان: ΔG=0 → T=ΔH/ΔS','ΔS°=−35.2/1000=−0.0352 kJ/mol·K','T=−9.83/(−0.0352)=279.26K','T=279.26−273=6.26°C'],a:'T=279.26K=6.26°C (نقطة تجمد البنزين)'},
+  {t:'تفسير',q:'اشرح الحالات الأربعة لتلقائية التفاعل بدلالة ΔH وΔS.',
+   s:['① ΔH=−, ΔS=+: ΔG=−−(+)(+)=سالب دائماً → تلقائي عند كل T','② ΔH=+, ΔS=−: ΔG=+−(+)(−)=موجب دائماً → غير تلقائي أبداً','③ ΔH=+, ΔS=+: تلقائي عند T العالية فقط (TΔS>ΔH)','④ ΔH=−, ΔS=−: تلقائي عند T المنخفضة فقط (|TΔS|<|ΔH|)'],a:'4 حالات تحددها إشارات ΔH وΔS ودرجة الحرارة'},
+  {t:'حساب',q:'احسب ΔS° للتفاعل: 2NO(g)+O₂(g)→2NO₂(g)\nS°: NO=210.62, O₂=205, NO₂=240.45 J/mol·K',
+   s:['ΔS°=Σ(n×S°نواتج)−Σ(m×S°متفاعلات)','نواتج: 2×240.45=480.9','متفاعلات: (2×210.62)+(1×205)=421.24+205=626.24','ΔS°=480.9−626.24=−145.3 J/mol·K'],a:'ΔS°=−145.3 J/mol·K'},
+  {t:'تفسير',q:'ما العوامل التي تؤثر في الانتروبي؟ اذكر 5 عوامل مع التفسير.',
+   s:['① الحالة الفيزيائية: مو(g)>مو(l)>مو(s)','② زيادة مولات الغاز في النواتج: أكثر جسيمات→أكثر عشوائية','③ درجة الحرارة: رفعها→طاقة حركية أكبر→عشوائية أكبر','④ التركيز (الإذابة): إذابة مادة صلبة→جسيمات أكثر في المحلول→S يزداد','⑤ حجم الغاز: زيادة الحجم→مسافات أكبر→عشوائية أكبر'],a:'5 عوامل: الحالة الفيزيائية، مولات الغاز، T، الإذابة، الحجم'},
+  {t:'حساب',q:'في أحد الأنظمة: ΔH°=−447.1 kJ/mol | ΔS°=−75.1 J/mol·K\nاحسب درجة الحرارة التي يصل عندها التفاعل للاتزان.',
+   s:['عند الاتزان: ΔG=0 → 0=ΔH−TΔS','TΔS=ΔH → T=ΔH/ΔS','ΔS°=−75.1/1000=−0.0751 kJ/mol·K','T=−447.1/(−0.0751)=5952 K≈5.95 K (خطأ في الكتاب - الصحيح 5952K)'],a:'T=5952 K≈5.95×10³ K'},
+  {t:'تفسير',q:'ما الفرق بين التلقائية والسرعة في التفاعلات الكيميائية؟ أعطِ مثالاً.',
+   s:['التلقائية: هل يحدث التفاعل تلقائياً بمجرد بدئه؟ يحددها ΔG','السرعة: كم يأخذ الوقت؟ يحددها طاقة التنشيط وثابت السرعة k','مثال: صدأ الحديد تلقائي (ΔG<0) لكن بطيء جداً','مثال: احتراق الماس تلقائي لكن بطيء جداً بدون تسخين أولي','∴ تفاعل تلقائي لا يعني بالضرورة أنه سريع'],a:'التلقائية≠السرعة — صدأ الحديد مثال على تلقائي بطيء'},
+  {t:'حساب',q:'استعيني بجدول قيم ΔH°f وS° لإيجاد ΔG° للتفاعل عند 25°C:\n2CO(g)+O₂(g)→2CO₂(g)\nΔH°f: CO=−111, O₂=0, CO₂=−393.5 kJ/mol\nS°: CO=197.8, O₂=205, CO₂=213.6 J/mol·K',
+   s:['ΔH°r=[(2×−393.5)]−[(2×−111)+(1×0)]=(−787)−(−222)=−565 kJ/mol','ΔS°=[(2×213.6)]−[(2×197.8)+(1×205)]=(427.2)−(600.6)=−173.4 J/mol·K','ΔS°=−0.1734 kJ/mol·K','T=298K','ΔG°=−565−(298×−0.1734)=−565+51.67=−513.3 kJ/mol'],a:'ΔG°=−513.3 kJ/mol → تلقائي عند 25°C'}
+]
+};
+
+/* ═══ MCQ ENGINE ═══ */
+const mst={};
+function initMCQ(u){
+  const w=document.getElementById('mw'+u);
+  if(w.dataset.init)return;
+  w.dataset.init='1';
+  mst[u]={cur:0,sc:0,wr:0,ans:false};
+  renderMCQ(u);
+}
+function renderMCQ(u){
+  const s=mst[u],qs=Q[u],q=qs[s.cur],ls=['أ','ب','ج','د'];
+  const p=Math.round((s.cur/qs.length)*100);
+  document.getElementById('mw'+u).innerHTML=`
+    <div class="mpw"><div class="mp" style="width:${p}%"></div></div>
+    <div class="minfo"><span>السؤال ${s.cur+1} من ${qs.length}</span><span>✓ ${s.sc} &nbsp; ✗ ${s.wr}</span></div>
+    <div class="qcard">
+      <div class="qtxt">${q.q.replace(/\n/g,'<br>')}</div>
+      <div class="opts">${q.o.map((x,i)=>`<div class="opt" id="${u}o${i}" onclick="pick('${u}',${i})"><div class="ol">${ls[i]}</div><span>${x}</span></div>`).join('')}</div>
+      <div class="fb" id="${u}fb"></div>
+      <button class="bnx" id="${u}nx" onclick="nxt('${u}')">${s.cur<qs.length-1?'السؤال التالي ←':'عرض النتيجة 🎯'}</button>
+    </div>
+    <div class="rbox" id="${u}rb"></div>
+  `;
+  s.ans=false;
+}
+function pick(u,i){
+  const s=mst[u];if(s.ans)return;s.ans=true;
+  const q=Q[u][s.cur];
+  document.querySelectorAll(`#mw${u} .opt`).forEach(x=>x.classList.add('disabled'));
+  const fb=document.getElementById(u+'fb');
+  if(i===q.a){document.getElementById(u+'o'+i).classList.add('correct');fb.className='fb show cfb';fb.innerHTML='✅ '+q.f;s.sc++;}
+  else{document.getElementById(u+'o'+i).classList.add('wrong');document.getElementById(u+'o'+q.a).classList.add('correct');fb.className='fb show wfb';fb.innerHTML='❌ '+q.f;s.wr++;}
+  document.getElementById(u+'nx').classList.add('show');
+}
+function nxt(u){
+  const s=mst[u];s.cur++;
+  if(s.cur>=Q[u].length){showRes(u);return;}
+  renderMCQ(u);
+}
+function showRes(u){
+  const s=mst[u],n=Q[u].length,p=Math.round((s.sc/n)*100);
+  let e='📚',m='راجعي أكثر!';
+  if(p>=90){e='🏆';m='ممتاز!';}else if(p>=75){e='🌟';m='جيد جداً!';}else if(p>=60){e='👍';m='جيد — راجعي الخطأ.';}
+  document.getElementById('mw'+u).innerHTML=`<div class="rbox show"><div class="re">${e}</div><div class="rs">${s.sc}/${n}</div><div class="rl">${p}%</div><div class="rm">${m}</div><button class="brt" onclick="restartMCQ('${u}')">🔄 حاولي مرة أخرى</button></div>`;
+}
+function restartMCQ(u){mst[u]={cur:0,sc:0,wr:0,ans:false};document.getElementById('mw'+u).dataset.init='1';renderMCQ(u);}
+
+/* ═══ ESSAY ENGINE ═══ */
+const tc={'حساب':'tc-c','تفسير':'tc-e','فسّري وحساب':'tc-b'};
+function initEssay(u){
+  const el=document.getElementById('el'+u);
+  if(el.dataset.init)return;el.dataset.init='1';
+  el.innerHTML=E[u].map((d,i)=>`
+    <div class="eq">
+      <div class="eq-hd"><div class="eqn">${i+1}</div><div><span class="ebadge ${tc[d.t]||'tc-b'}">${d.t}</span><div class="eqtxt">${d.q.replace(/\n/g,'<br>')}</div></div></div>
+      <div class="atog" onclick="togA(this)"><span>💡 عرض الإجابة النموذجية</span><span class="chv">▼</span></div>
+      <div class="acnt"><div class="ain">
+        ${d.s.map((st,j)=>`<div class="step"><div class="sn">${j+1}</div><div>${st}</div></div>`).join('')}
+        <div class="fan">✓ ${d.a}</div>
+      </div></div>
+    </div>`).join('');
+}
+function togA(b){b.classList.toggle('open');b.nextElementSibling.classList.toggle('open');}
+
+/* ══ THEME TOGGLE ══ */
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light')) {
+    body.classList.remove('light');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.add('light');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+// Apply saved theme on load
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  document.getElementById('themeBtn').textContent = '☀️';
+}
+
+</script>
+</body>
+</html>
